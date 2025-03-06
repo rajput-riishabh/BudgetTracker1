@@ -1,12 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\2380141\\OneDrive - Cognizant\\Documents\\community_practice\\BudgetTrackerAPI\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{531DDE37-B4FD-409C-B20C-B617A01E3701}|BudgetTrackerWebApp\\BudgetTrackerWebApp.csproj|c:\\users\\2380141\\onedrive - cognizant\\documents\\community_practice\\budgettrackerapi\\budgettrackerwebapp\\views\\auth\\loginsuccess.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{531DDE37-B4FD-409C-B20C-B617A01E3701}|BudgetTrackerWebApp\\BudgetTrackerWebApp.csproj|solutionrelative:budgettrackerwebapp\\views\\auth\\loginsuccess.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -14,20 +9,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": -1,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "LoginSuccess.cshtml",
-              "DocumentMoniker": "C:\\Users\\2380141\\OneDrive - Cognizant\\Documents\\community_practice\\BudgetTrackerAPI\\BudgetTrackerWebApp\\Views\\Auth\\LoginSuccess.cshtml",
-              "RelativeDocumentMoniker": "BudgetTrackerWebApp\\Views\\Auth\\LoginSuccess.cshtml",
-              "ToolTip": "C:\\Users\\2380141\\OneDrive - Cognizant\\Documents\\community_practice\\BudgetTrackerAPI\\BudgetTrackerWebApp\\Views\\Auth\\LoginSuccess.cshtml",
-              "RelativeToolTip": "BudgetTrackerWebApp\\Views\\Auth\\LoginSuccess.cshtml",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-05T18:33:56.748Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             }
           ]
         }

@@ -38,6 +38,17 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme) // Se
 // **Add Authorization service** (required for [Authorize] attribute to work)
 builder.Services.AddAuthorization();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin", builder =>
+    {
+        builder.WithOrigins("http://localhost:3000", "http://localhost:5112") // Add your front-end URLs
+               .AllowAnyHeader()
+               .AllowAnyMethod()
+               .AllowCredentials(); // If you need to send cookies or authorization headers
+    });
+});
+
 
 
 var app = builder.Build();
@@ -50,7 +61,7 @@ if (app.Environment.IsDevelopment())
 }
 
 //app.UseHttpsRedirection(); // Removed HTTPS redirection
-
+app.UseCors("AllowSpecificOrigin");
 // **Add Authentication Middleware - MUST come before Authorization and MapControllers**
 app.UseAuthentication();
 app.UseAuthorization();

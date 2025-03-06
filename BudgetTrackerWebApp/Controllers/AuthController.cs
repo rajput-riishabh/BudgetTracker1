@@ -43,12 +43,12 @@ namespace BudgetTrackerWebApp.Controllers
                     var responseContent = await response.Content.ReadAsStringAsync();
                     // **Extract JWT token from API response**
                     JsonNode responseObject = JsonNode.Parse(responseContent); // Parse JSON response
-                    string token = responseObject["token"].ToString(); // **Assuming token key is "token" - REPLACE if different**
+                    string token = responseObject["token"].ToString(); // token key is "token
 
                     // **Pass token to the View using ViewBag**
                     ViewBag.AuthToken = token;
 
-                    return View("LoginSuccess"); // Redirect to a LoginSuccess View (create this next)
+                    return View("Login"); 
                 }
                 else
                 {

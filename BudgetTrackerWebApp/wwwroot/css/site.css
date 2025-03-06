@@ -1,53 +1,169 @@
-html {
-  font-size: 14px;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+/*  Color Palette from colorhunt.co/palette/18230f27391c255f381f7d53 */
+:root {
+    --color-primary-dark: #18230f; /* Darkest shade - for primary backgrounds, strong accents */
+    --color-secondary-dark: #27391c; /* Darker shade - for secondary backgrounds, accents */
+    --color-accent: #255f38; /* Accent color - for highlights, interactive elements */
+    --color-light-accent: #1f7d53; /* Lighter accent - for softer highlights, button hovers */
+    --color-background-light: #f8f9fa; /* Light background - for main page background */
+    --color-text-dark: #343a40; /* Dark text - for primary text color */
+    --color-text-light: #ffffff; /* Light text - for text on dark backgrounds */
+    --bs-primary: var(--color-accent); /* Bootstrap Primary Color to Accent */
+    --bs-secondary: var(--color-secondary-dark); /* Bootstrap Secondary Color to Secondary Dark */
+    --bs-success: var(--color-light-accent); /* Bootstrap Success to Lighter Accent */
+    --bs-dark: var(--color-primary-dark); /* Bootstrap Dark to Primary Dark */
+    --bs-body-bg: var(--color-background-light); /* Bootstrap Body Background to Light Background */
+    --bs-body-color: var(--color-text-dark); /* Bootstrap Body Color to Dark Text */
 }
 
 body {
-  margin-bottom: 60px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+    background-color: var(--bs-body-bg);
+    color: var(--bs-body-color);
+    margin: 0; /* Reset default body margin */
+    padding-top: 50px; /* Example padding to avoid content behind fixed navbar if you add one later */
 }
 
-/* Custom styles for sidebar */
-#sidebar {
-    background-color: #f8f9fa; /* Light gray background (Bootstrap's light theme background) */
-    border-right: 1px solid #dee2e6; /* Light border on the right side */
-    padding-top: 15px;
+h1, h2, h3, h4, h5, h6 {
+    color: var(--color-primary-dark); /* Dark headings */
 }
 
-.sidebar .nav-link {
-    padding: 0.5rem 1rem; /* Adjust link padding */
-    color: #333; /* Darker text color for links */
+.btn-primary {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
 }
 
-    .sidebar .nav-link:hover {
-        background-color: #e9ecef; /* Slightly darker background on hover */
-        color: #007bff; /* Primary blue color on hover */
+    .btn-primary:hover {
+        background-color: var(--color-light-accent);
+        border-color: var(--color-light-accent);
     }
 
-    .sidebar .nav-link.active {
-        background-color: #007bff; /* Primary blue background for active link */
-        color: white; /* White text color for active link */
-        border-radius: 0.25rem; /* Slightly rounded corners for active link */
+.btn-secondary {
+    background-color: var(--bs-secondary);
+    border-color: var(--bs-secondary);
+    color: var(--color-text-light);
+}
+
+    .btn-secondary:hover {
+        background-color: var(--color-primary-dark);
+        border-color: var(--color-primary-dark);
     }
 
-.sidebar-heading {
+/* Example styling for navbar (if you add one later) */
+.navbar {
+    background-color: var(--color-secondary-dark);
+}
+
+.navbar-brand, .nav-link {
+    color: var(--color-text-light);
+}
+
+    .navbar-brand:hover, .nav-link:hover {
+        color: var(--color-light-accent);
+    }
+
+/* Style for sidebar (adjust as needed) */
+.sidebar {
+    background-color: var(--color-secondary-dark);
+    color: var(--color-text-light);
+}
+
+    .sidebar .nav-link {
+        color: var(--color-text-light);
+    }
+
+        .sidebar .nav-link:hover, .sidebar .nav-link.active {
+            background-color: var(--color-primary-dark);
+            color: var(--color-light-accent);
+        }
+
+.card {
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Light card border */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05); /* Subtle card shadow */
+    border-radius: 0.5rem; /* Slightly rounded corners for cards */
+}
+
+.card-header {
+    background-color: rgba(0, 0, 0, 0.03); /* Very light background for card header */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.card-footer {
+    background-color: rgba(0, 0, 0, 0.03); /* Very light background for card footer */
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+
+/* Existing card hover effect - keep this */
+.expense-card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth transition for transform and shadow */
+}
+
+    .expense-card.expanded-card {
+        transform: scale(1.05); /* Slightly scale up on hover */
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Add shadow on hover */
+        z-index: 1; /* Ensure hovered card is above others if overlapping */
+    }
+
+.card-text {
+    overflow: hidden; /* Clip overflowing text */
+    text-overflow: ellipsis; /* Add ellipsis (...) for overflow */
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+
+/* Sidebar Toggle Button Styling */
+.sidebar-toggler {
+    padding: 0.25rem 0.5rem;
     font-size: 0.875rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05rem;
-    color: #777; /* Muted color for heading */
-    padding: 0.5rem 1rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+}
+
+/* Collapsed Sidebar Styles */
+#sidebar.collapsed {
+    width: 4.5rem; /* Narrower width when collapsed */
+}
+
+    #sidebar.collapsed .nav-link span {
+        display: none; /* Hide link text when collapsed */
+    }
+
+    #sidebar.collapsed .nav-link {
+        padding-left: 0.75rem; /* Adjust padding when collapsed */
+        padding-right: 0.75rem;
+        text-align: center; /* Center icons */
+    }
+
+    #sidebar.collapsed .sidebar-heading {
+        display: none; /* Hide sidebar headings when collapsed */
+    }
+
+    #sidebar.collapsed .sidebar-toggler {
+        justify-content: center; /* Center toggle button in collapsed sidebar */
+    }
+
+
+/* Ensure main content adjusts when sidebar collapses */
+main {
+    margin-left: 4.5rem; /* Initial margin to accommodate sidebar */
+    transition: margin-left 0.25s ease-out; /* Smooth transition for margin change */
+}
+
+    main.sidebar-expanded {
+        margin-left: 17rem; /* Adjust this to your sidebar's expanded width */
+    }
+
+
+@media (min-width: 768px) { /* For medium and larger screens */
+    #sidebar.collapsed {
+        width: 4.5rem; /* Keep collapsed width on larger screens */
+    }
+
+    main {
+        margin-left: 17rem; /* Default sidebar width on larger screens */
+    }
+
+        main.sidebar-expanded {
+            margin-left: 17rem; /* No change in margin when "expanded" on larger screens (sidebar is always visible) */
+        }
 }

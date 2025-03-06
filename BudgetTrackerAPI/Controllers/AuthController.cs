@@ -4,13 +4,14 @@ using BudgetTrackerAPI.Models.DTOs;
 using BudgetTrackerAPI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity; // For PasswordHasher
-using Microsoft.EntityFrameworkCore; // Add this for FirstOrDefaultAsync
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization; // Add this for FirstOrDefaultAsync
 
 namespace BudgetTrackerAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    
+
     public class AuthController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
@@ -92,6 +93,22 @@ namespace BudgetTrackerAPI.Controllers
             var token = _jwtService.GenerateToken(user);
 
             return Ok(new { Token = token, Message = "Login successful" }); // Return token and success message
+        }
+
+        [HttpGet("dashboarddata")] // New endpoint for dashboard data
+        [Authorize] //  <--  Protect this endpoint with JWT Authentication
+        public IActionResult GetDashboardData()
+        {
+            // In a real application, you would fetch actual dashboard data from services/database here
+            var dashboardData = new
+            {
+                WelcomeMessage = "Welcome to your Budget Dashboard, " + User.Identity?.Name, // Example: Get username from token (if available)
+                TotalExpensesThisMonth = 1500,
+                BudgetRemaining = 500
+                // ... more dashboard data ...
+            };
+
+            return Ok(dashboardData); // Return sample dashboard data as JSON
         }
     }
 }

@@ -1,0 +1,61 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<h1>Dashboard</h1>
+
+<div id="dashboard-data">
+    <p>Loading dashboard data...</p>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // We'll add JavaScript here to fetch data and update the dashboard
+            fetchDashboardData(); // Call a function to fetch data
+        });
+
+                async function fetchDashboardData() {
+            const dashboardDataContainer = document.getElementById('dashboard-data');
+            dashboardDataContainer.textContent = 'Fetching data...';
+
+            const token = localStorage.getItem('authToken'); // Get token from local storage
+
+            if (!token) {
+                dashboardDataContainer.textContent = 'Not logged in.'; // Handle case where token is missing (not logged in)
+                return; // Stop fetching if no token
+            }
+
+            try {
+                const response = await fetch('http://localhost:5285/api/Auth/dashboarddata', { // API endpoint URL
+                    headers: {
+                        'Authorization': 'Bearer ' + token, // Include JWT token in Authorization header
+                        'Content-Type': 'application/json' // Assuming API expects JSON
+                    }
+                });
+
+                if (response.ok) {
+                    const data = await response.json(); // Parse JSON response
+                    console.log("Data received from API:", data); // <--- ADD THIS LINE
+                    displayDashboardData(data); // Call function to display data
+                } else {
+                    dashboardDataContainer.textContent = 'Error fetching dashboard data.'; // Handle API error
+                    console.error('API Error:', response);
+                }
+
+            } catch (error) {
+                dashboardDataContainer.textContent = 'Error fetching dashboard data.';
+                console.error('Fetch error:', error);
+            }
+        }
+
+        function displayDashboardData(data) {
+            const dashboardDataContainer = document.getElementById('dashboard-data');
+            dashboardDataContainer.innerHTML = `
+                <h3>${data.welcomeMessage}</h3>
+                <p>Total Expenses This Month: ₹${data.totalExpensesThisMonth}</p>
+                <p>Budget Remaining: ₹${data.budgetRemaining}</p>
+                `; // Example display - customize as needed
+        }
+    </script>
+}

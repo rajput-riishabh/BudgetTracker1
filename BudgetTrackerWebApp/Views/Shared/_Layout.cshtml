@@ -1,66 +1,105 @@
-﻿<!DOCTYPE html>
+﻿@* BudgetTracker.Web/Views/Shared/_Layout.cshtml *@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - BudgetTrackerWebApp</title>
+    <title>@ViewData["Title"] - BudgetBuddy</title>  @* Updated title to include "BudgetBuddy" *@
     <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/BudgetTrackerWebApp.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.18.0/font/bootstrap-icons.css"> @* Bootstrap Icons CDN *@
 </head>
 <body>
-    <div class="container-fluid">
-        
-        <div class="row"> 
 
-            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar"> 
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+            @* Example dark navbar - adjust if needed *@
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">BudgetBuddy</a> @* Website name in navbar (if you want a navbar) *@
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="d-flex align-items-center justify-content-between px-3 mb-3">
+                <span class="fs-5 fw-bold text-white">
+                    <i class="bi bi-piggy-bank-fill me-2"></i> BudgetBuddy
+                </span>
+                <button class="btn btn-sm btn-outline-light sidebar-toggler" aria-label="Toggle sidebar">
+                    <i class="bi bi-chevron-left"></i>
+                </button>
+            </div>
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                @* Sidebar with collapse class for toggling *@
                 <div class="position-sticky pt-3">
+                    <div class="d-flex align-items-center justify-content-between px-3 mb-3">
+                        <span class="fs-5 fw-bold text-white">
+                            <i class="bi bi-piggy-bank-fill me-2"></i> BudgetBuddy @* Website name with icon in sidebar *@
+                        </span>
+                        <button class="btn btn-sm btn-outline-light sidebar-toggler" aria-label="Toggle sidebar">
+                            @* Sidebar toggle button *@
+                            <i class="bi bi-chevron-left"></i>
+                        </button>
+                    </div>
 
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" asp-area="" asp-controller="Home" asp-action="Index">
-                                <span data-feather="home"></span>
-                                Home
+                            <a class="nav-link active" asp-controller="Home" asp-action="Index">
+                                <i class="bi bi-house-fill me-2"></i> Home @* Home icon *@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Expenses">
-                                
-            <span data-feather="file"></span>
-            Expenses
+                            <a class="nav-link" asp-controller="Home" asp-action="Dashboard">
+                                <i class="bi bi-speedometer2 me-2"></i> Dashboard @* Dashboard icon *@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Budgets">
-                                
-            <span data-feather="shopping-cart"></span>
-            Budgets
+                            <a class="nav-link" asp-controller="Home" asp-action="Expenses">
+                                <i class="bi bi-receipt me-2"></i> Expenses @* Expenses icon *@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Reports">
-                               
-            <span data-feather="bar-chart-2"></span>
-            Reports
+                            <a class="nav-link" asp-controller="Home" asp-action="Budgets">
+                                <i class="bi bi-wallet2 me-2"></i> Budgets @* Budgets icon *@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Profile">
-                                
-            <span data-feather="users"></span>
-            Profile
+                            <a class="nav-link" asp-controller="Home" asp-action="Reports">
+                                <i class="bi bi-bar-chart-line-fill me-2"></i> Reports @* Reports icon *@
                             </a>
                         </li>
-                        <li class="nav-item"> 
-                            <a class="nav-link" asp-area="" asp-controller="Auth" asp-action="Login"> 
-                                <span data-feather="log-in"></span> Login
-                             </a> 
-                         </li>
-                        <li class="nav-item">  
-                            <a class="nav-link" asp-area="" asp-controller="Auth" asp-action="Register">
-                                <span data-feather="user-plus"></span> Register 
-                             </a> 
-                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Profile">
+                                <i class="bi bi-person-circle me-2"></i> Profile @* Profile icon *@
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Auth" asp-action="Login">
+                                <i class="bi bi-box-arrow-in-right me-2"></i> Login @* Login icon *@
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Auth" asp-action="Register">
+                                <i class="bi bi-person-plus-fill me-2"></i> Register @* Register icon *@
+                            </a>
+                        </li>
                     </ul>
 
                     <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
@@ -72,32 +111,35 @@
                     <ul class="nav flex-column mb-2">
                         <li class="nav-item">
                             <a class="nav-link" href="#">
-                                <span data-feather="file-text"></span>
-                                Current month
+                                <i class="bi bi-file-earmark-text-fill me-2"></i> Current month @* Report icon *@
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">
-                                <span data-feather="file-text"></span>
-                                Last quarter
+                                <i class="bi bi-file-earmark-text-fill me-2"></i> Last quarter @* Report icon *@
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">
-                                <span data-feather="file-text"></span>
-                                Year-end sale
+                                <i class="bi bi-file-earmark-text-fill me-2"></i> Year-end sale @* Report icon *@
                             </a>
                         </li>
                     </ul>
                 </div>
             </nav>
 
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4"> 
-                @RenderBody() 
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                @RenderBody() @* Where page-specific content will be rendered *@
             </main>
         </div>
     </div>
 
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2025 - BudgetBuddy - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

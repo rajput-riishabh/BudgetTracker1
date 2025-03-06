@@ -1,6 +1,126 @@
-﻿@{
-    ViewData["Title"] = "Expenses"; // Should match ViewData["Title"] set in controller
+﻿@* BudgetTrackerWeb/Views/Home/ViewExpenses.cshtml *@
+@{
+    ViewData["Title"] = "Expenses";
 }
 
-<h1>@ViewData["Title"]</h1>
-<p>Content for the Expenses page will go here.</p>
+<h1>Expenses</h1>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <div>
+        <input type="search" class="form-control form-control-sm" placeholder="Search Expenses...">
+        <div class="mt-2">
+            <div class="btn-group">
+                <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    Category
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">All</a></li>
+                    <li><a class="dropdown-item" href="#">Food</a></li>
+                    <li><a class="dropdown-item" href="#">Transport</a></li>
+                    <li><a class="dropdown-item" href="#">Utilities</a></li>
+                </ul>
+            </div>
+            <div class="btn-group ms-2">
+                <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    Date Range
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">All Dates</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">Last Month</a></li>
+                </ul>
+            </div>
+            <div class="btn-group ms-2" role="group" aria-label="Sorting">
+                <button type="button" class="btn btn-outline-secondary">Sort Date (Newest)</button>
+                <button type="button" class="btn btn-outline-secondary">Sort Date (Oldest)</button>
+                <button type="button" class="btn btn-outline-secondary">Sort Amount (High)</button>
+                <button type="button" class="btn btn-outline-secondary">Sort Amount (Low)</button>
+            </div>
+        </div>
+    </div>
+    <div>
+        <a asp-action="AddExpense" class="btn btn-primary">Add New Expense</a>  @* Button to Add Expense *@
+    </div>
+</div>
+
+
+<div id="expenses-container" class="row row-cols-1 row-cols-md-3 g-4">
+    @* Container for expense cards - using Bootstrap grid for responsive layout *@
+    @* Expense cards will be dynamically added here by JavaScript *@
+    <p id="no-expenses-message" style="display:none;">No expenses recorded yet.</p> @* Initially hidden *@
+</div>
+
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetchExpensesData(); // Function to fetch and display expenses
+        });
+
+        async function fetchExpensesData() {
+            const expensesContainer = document.getElementById('expenses-container');
+            const noExpensesMessage = document.getElementById('no-expenses-message');
+            expensesContainer.innerHTML = 'Loading expenses...'; // Initial loading message
+            noExpensesMessage.style.display = 'none'; // Hide "no expenses" message initially
+
+            // ... (JavaScript fetch code to get expenses from API - we'll build this next) ...
+            // ... (After fetching and processing expenses, call displayExpenses(expenses)) ...
+
+            // For now, placeholder example (remove this in actual implementation):
+            const sampleExpenses = [
+                { id: 1, category: 'Food', date: '2024-03-06', description: 'Lunch with client', amount: 250 },
+                { id: 2, category: 'Transport', date: '2024-03-05', description: 'Fuel for car', amount: 1200 },
+                { id: 3, category: 'Utilities', date: '2024-03-04', description: 'Electricity bill', amount: 850 }
+            ];
+            displayExpenses(sampleExpenses); // Call display function with sample data
+        }
+
+
+        function displayExpenses(expenses) {
+            const expensesContainer = document.getElementById('expenses-container');
+            const noExpensesMessage = document.getElementById('no-expenses-message');
+            expensesContainer.innerHTML = ''; // Clear loading message/previous cards
+
+            if (expenses.length === 0) {
+                noExpensesMessage.style.display = 'block'; // Show "no expenses" message
+                return;
+            } else {
+                noExpensesMessage.style.display = 'none'; // Ensure "no expenses" message is hidden
+            }
+
+            expenses.forEach(expense => {
+                const cardHtml = `
+                    <div class="col">
+                        <div class="card h-100 expense-card" style="cursor:pointer;">  @* Added class expense-card and cursor style for hover *@
+                            <div class="card-header">
+                                <h5 class="card-title badge bg-primary">${expense.category}</h5> @* Category in header as badge *@
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-subtitle mb-2 text-muted">${expense.date}</h6> @* Date as subtitle *@
+                                <p class="card-text">${expense.description.substring(0, 50)}...</p> @* Truncated description *@
+                                <p class="card-text">Amount: ₹${expense.amount}</p> @* Amount with Rupee symbol *@
+                            </div>
+                            <div class="card-footer bg-light border-top-0"> @* Footer for actions *@
+                                <button class="btn btn-sm btn-outline-info">Edit</button>
+                                <button class="btn btn-sm btn-outline-danger ms-2">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                expensesContainer.innerHTML += cardHtml; // Append card HTML to container
+            });
+
+             // Implement card hover expansion using CSS (add CSS to site.css later)
+            const expenseCards = document.querySelectorAll('.expense-card');
+            expenseCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.classList.add('expanded-card'); // Add class on hover-in
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.classList.remove('expanded-card'); // Remove class on hover-out
+                });
+            });
+        }
+
+    </script>
+}

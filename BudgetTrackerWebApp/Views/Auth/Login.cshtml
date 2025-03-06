@@ -1,25 +1,79 @@
-﻿@{
+﻿@model BudgetTrackerWebApp.Models.ViewModels.LoginViewModel
+@{
     ViewData["Title"] = "Login";
+    string Token = ViewBag.AuthToken;
 }
 
 <h1>Login</h1>
 
 <div class="row">
     <div class="col-md-4">
-        <form asp-controller="Auth" asp-action="Login" method="post">
-            <div asp-validation-summary="ModelOnly"></div>
-            <div class="mb-3">
-                <label for="username" class="form-label">Username</label> <----- Updated Label to "Username"
-                <input type="text" class="form-control" id="username" name="username" required> <----- Updated id and name to "username"
+        <form id="loginForm" asp-controller="Auth" asp-action="Login" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" id="Username" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
             </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="password" required>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" type="password" class="form-control" id="Password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
             </div>
-            <button type="submit" class="btn btn-primary">Login</button>
+            <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-primary" />
+            </div>
             <div class="mt-2">
-                <p>Don't have an account? <a asp-action="Register">Register</a></p>
+                <p>Don't have an account? <a asp-action="register">Register</a></p>
             </div>
+            <div id="login-error" class="text-danger"></div> @* For displaying login errors *@
         </form>
     </div>
 </div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        document.addEventListener('DOMContentLoaded', function() { // Wrap your script in DOMContentLoaded
+            document.getElementById('loginForm').addEventListener('submit', async function(event) {
+                event.preventDefault(); // Prevent default form submission
+
+                const username = document.getElementById('Username').value;
+                const password = document.getElementById('Password').value;
+                const errorDiv = document.getElementById('login-error');
+                errorDiv.textContent = ''; // Clear previous errors
+
+                try {
+                    const response = await fetch('http://localhost:5285/api/auth/login', { // Adjust URL if needed
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ username: username, password: password })
+                    });
+
+                    if (response.ok) {
+                        const data = await response.json(); // Assuming API returns JSON with token
+                        const token = data.token; // Assuming token is in the 'token' field of the JSON response
+
+                        if (token) {
+                            localStorage.setItem('authToken', token); // Store token in localStorage
+                            // Redirect to dashboard or home page after successful login
+                            window.location.href = '/Home/Index'; // Redirect to the Dashboard page (adjust URL as needed)
+                        } else {
+                            errorDiv.textContent = 'Login successful but token not received.';
+                        }
+                    } else {
+                        const errorData = await response.json(); // Assuming API returns JSON error
+                        errorDiv.textContent = errorData.message || 'Login failed.'; // Display error message from API or default message
+                    }
+
+                } catch (error) {
+                    console.error('Login error:', error);
+                    errorDiv.textContent = 'An error occurred during login.';
+                }
+            });
+        });
+    </script>
+}

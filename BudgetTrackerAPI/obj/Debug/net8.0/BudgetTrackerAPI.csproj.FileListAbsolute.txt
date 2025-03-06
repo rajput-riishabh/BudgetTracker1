@@ -159,6 +159,7 @@ C:\Users\2380141\OneDrive - Cognizant\Documents\community_practice\BudgetTracker
 C:\Users\2380141\OneDrive - Cognizant\Documents\community_practice\BudgetTrackerAPI\BudgetTrackerAPI\obj\Debug\net8.0\BudgetTrackerAPI.csproj.CoreCompileInputs.cache
 C:\Users\2380141\OneDrive - Cognizant\Documents\community_practice\BudgetTrackerAPI\BudgetTrackerAPI\obj\Debug\net8.0\BudgetTrackerAPI.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\2380141\OneDrive - Cognizant\Documents\community_practice\BudgetTrackerAPI\BudgetTrackerAPI\obj\Debug\net8.0\BudgetTrackerAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\2380141\OneDrive - Cognizant\Documents\community_practice\BudgetTrackerAPI\BudgetTrackerAPI\obj\Debug\net8.0\BudgetTrackerAPI.sourcelink.json
 C:\Users\2380141\OneDrive - Cognizant\Documents\community_practice\BudgetTrackerAPI\BudgetTrackerAPI\obj\Debug\net8.0\scopedcss\bundle\BudgetTrackerAPI.styles.css
 C:\Users\2380141\OneDrive - Cognizant\Documents\community_practice\BudgetTrackerAPI\BudgetTrackerAPI\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\2380141\OneDrive - Cognizant\Documents\community_practice\BudgetTrackerAPI\BudgetTrackerAPI\obj\Debug\net8.0\staticwebassets.development.json

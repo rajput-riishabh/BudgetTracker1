@@ -1,6 +1,16 @@
 [
   {
     "ContainingType": "BudgetTrackerAPI.Controllers.AuthController",
+    "Method": "GetDashboardData",
+    "RelativePath": "api/Auth/dashboarddata",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BudgetTrackerAPI.Controllers.AuthController",
     "Method": "Login",
     "RelativePath": "api/Auth/login",
     "HttpMethod": "POST",

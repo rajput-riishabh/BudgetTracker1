@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\2380141\\OneDrive - Cognizant\\Documents\\community_practice\\BudgetTrackerAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\2380141\\OneDrive - Cognizant\\Documents\\community_practice\\BudgetTrackerAPI\\BudgetTrackerWebApp\\Views\\Auth\\LoginSuccess.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BudgetTrackerWebApp\\Views\\Auth\\LoginSuccess.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{531DDE37-B4FD-409C-B20C-B617A01E3701}|BudgetTrackerWebApp\\BudgetTrackerWebApp.csproj|c:\\users\\2380141\\onedrive - cognizant\\documents\\community_practice\\budgettrackerapi\\budgettrackerwebapp\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{531DDE37-B4FD-409C-B20C-B617A01E3701}|BudgetTrackerWebApp\\BudgetTrackerWebApp.csproj|solutionrelative:budgettrackerwebapp\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{531DDE37-B4FD-409C-B20C-B617A01E3701}|BudgetTrackerWebApp\\BudgetTrackerWebApp.csproj|c:\\users\\2380141\\onedrive - cognizant\\documents\\community_practice\\budgettrackerapi\\budgettrackerwebapp\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{531DDE37-B4FD-409C-B20C-B617A01E3701}|BudgetTrackerWebApp\\BudgetTrackerWebApp.csproj|solutionrelative:budgettrackerwebapp\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,14 +23,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "LoginSuccess.cshtml",
-              "DocumentMoniker": "C:\\Users\\2380141\\OneDrive - Cognizant\\Documents\\community_practice\\BudgetTrackerAPI\\BudgetTrackerWebApp\\Views\\Auth\\LoginSuccess.cshtml",
-              "RelativeDocumentMoniker": "BudgetTrackerWebApp\\Views\\Auth\\LoginSuccess.cshtml",
-              "ToolTip": "C:\\Users\\2380141\\OneDrive - Cognizant\\Documents\\community_practice\\BudgetTrackerAPI\\BudgetTrackerWebApp\\Views\\Auth\\LoginSuccess.cshtml",
-              "RelativeToolTip": "BudgetTrackerWebApp\\Views\\Auth\\LoginSuccess.cshtml",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-05T18:33:56.748Z",
+              "Title": "site.css",
+              "DocumentMoniker": "C:\\Users\\2380141\\OneDrive - Cognizant\\Documents\\community_practice\\BudgetTrackerAPI\\BudgetTrackerWebApp\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "BudgetTrackerWebApp\\wwwroot\\css\\site.css",
+              "ToolTip": "C:\\Users\\2380141\\OneDrive - Cognizant\\Documents\\community_practice\\BudgetTrackerAPI\\BudgetTrackerWebApp\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "BudgetTrackerWebApp\\wwwroot\\css\\site.css",
+              "ViewState": "AgIAAIgAAAAAAAAAAAAcwJcAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-03-06T17:40:18.765Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "site.js",
+              "DocumentMoniker": "C:\\Users\\2380141\\OneDrive - Cognizant\\Documents\\community_practice\\BudgetTrackerAPI\\BudgetTrackerWebApp\\wwwroot\\js\\site.js",
+              "RelativeDocumentMoniker": "BudgetTrackerWebApp\\wwwroot\\js\\site.js",
+              "ToolTip": "C:\\Users\\2380141\\OneDrive - Cognizant\\Documents\\community_practice\\BudgetTrackerAPI\\BudgetTrackerWebApp\\wwwroot\\js\\site.js",
+              "RelativeToolTip": "BudgetTrackerWebApp\\wwwroot\\js\\site.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-03-06T17:39:48.825Z",
               "EditorCaption": ""
             }
           ]

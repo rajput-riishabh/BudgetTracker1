@@ -30,10 +30,13 @@ namespace BudgetTrackerWebApp.Controllers
         }
 
         // **New Placeholder Actions for Sidebar Links:**
-
+        public IActionResult Dashboard()
+        {
+            return View(); // Returns the Dashboard.cshtml view
+        }
         public IActionResult Expenses()
         {
-            ViewData["Title"] = "Expenses"; // Set page title for Expenses view
+            //ViewData["Title"] = "Expenses"; // Set page title for Expenses view
             return View(); // Will look for Views/Home/Expenses.cshtml
         }
 

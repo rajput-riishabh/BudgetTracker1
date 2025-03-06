@@ -15,6 +15,7 @@ C:\Users\2380141\OneDrive - Cognizant\Documents\community_practice\BudgetTracker
 C:\Users\2380141\OneDrive - Cognizant\Documents\community_practice\BudgetTrackerAPI\BudgetTrackerWebApp\obj\Debug\net8.0\BudgetTrackerWebApp.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\2380141\OneDrive - Cognizant\Documents\community_practice\BudgetTrackerAPI\BudgetTrackerWebApp\obj\Debug\net8.0\BudgetTrackerWebApp.RazorAssemblyInfo.cache
 C:\Users\2380141\OneDrive - Cognizant\Documents\community_practice\BudgetTrackerAPI\BudgetTrackerWebApp\obj\Debug\net8.0\BudgetTrackerWebApp.RazorAssemblyInfo.cs
+C:\Users\2380141\OneDrive - Cognizant\Documents\community_practice\BudgetTrackerAPI\BudgetTrackerWebApp\obj\Debug\net8.0\BudgetTrackerWebApp.sourcelink.json
 C:\Users\2380141\OneDrive - Cognizant\Documents\community_practice\BudgetTrackerAPI\BudgetTrackerWebApp\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\2380141\OneDrive - Cognizant\Documents\community_practice\BudgetTrackerAPI\BudgetTrackerWebApp\obj\Debug\net8.0\scopedcss\bundle\BudgetTrackerWebApp.styles.css
 C:\Users\2380141\OneDrive - Cognizant\Documents\community_practice\BudgetTrackerAPI\BudgetTrackerWebApp\obj\Debug\net8.0\scopedcss\projectbundle\BudgetTrackerWebApp.bundle.scp.css

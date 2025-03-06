@@ -24,16 +24,16 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/2380141/OneDrive - Cognizant/Documents/community_practice/BudgetTrackerAPI/BudgetTrackerWebApp/Views/Auth/LoginSuccess.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxMb2dpblN1Y2Nlc3MuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/2380141/OneDrive - Cognizant/Documents/community_practice/BudgetTrackerAPI/BudgetTrackerWebApp/Views/Auth/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/2380141/OneDrive - Cognizant/Documents/community_practice/BudgetTrackerAPI/BudgetTrackerWebApp/Views/Home/Budgets.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxCdWRnZXRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2380141/OneDrive - Cognizant/Documents/community_practice/BudgetTrackerAPI/BudgetTrackerWebApp/Views/Home/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEYXNoYm9hcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/2380141/OneDrive - Cognizant/Documents/community_practice/BudgetTrackerAPI/BudgetTrackerWebApp/Views/Home/Expenses.cshtml]
