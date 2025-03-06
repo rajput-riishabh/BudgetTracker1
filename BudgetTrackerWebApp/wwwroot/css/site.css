@@ -1,0 +1,53 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+/* Custom styles for sidebar */
+#sidebar {
+    background-color: #f8f9fa; /* Light gray background (Bootstrap's light theme background) */
+    border-right: 1px solid #dee2e6; /* Light border on the right side */
+    padding-top: 15px;
+}
+
+.sidebar .nav-link {
+    padding: 0.5rem 1rem; /* Adjust link padding */
+    color: #333; /* Darker text color for links */
+}
+
+    .sidebar .nav-link:hover {
+        background-color: #e9ecef; /* Slightly darker background on hover */
+        color: #007bff; /* Primary blue color on hover */
+    }
+
+    .sidebar .nav-link.active {
+        background-color: #007bff; /* Primary blue background for active link */
+        color: white; /* White text color for active link */
+        border-radius: 0.25rem; /* Slightly rounded corners for active link */
+    }
+
+.sidebar-heading {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+    color: #777; /* Muted color for heading */
+    padding: 0.5rem 1rem;
+}

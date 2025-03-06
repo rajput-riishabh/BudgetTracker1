@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\BudgetTrackerWebApp.props" />
+</Project>

@@ -1,0 +1,17 @@
+[
+  {
+    "Name": "BudgetTracker",
+    "Projects": [
+      {
+        "Path": "BudgetTrackerAPI\\BudgetTrackerAPI.csproj",
+        "Action": "Start",
+        "DebugTarget": "http"
+      },
+      {
+        "Path": "BudgetTrackerWebApp\\BudgetTrackerWebApp.csproj",
+        "Action": "Start",
+        "DebugTarget": "http"
+      }
+    ]
+  }
+]
