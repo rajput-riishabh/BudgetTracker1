@@ -1,169 +1,603 @@
-/*  Color Palette from colorhunt.co/palette/18230f27391c255f381f7d53 */
+/* site.css - Refined and Enhanced Styles */
+
+/* --------------------------------------- */
+/*             Color Palette             */
+/* From colorhunt.co/palette/18230f27391c255f381f7d53 */
+/* --------------------------------------- */
 :root {
-    --color-primary-dark: #18230f; /* Darkest shade - for primary backgrounds, strong accents */
-    --color-secondary-dark: #27391c; /* Darker shade - for secondary backgrounds, accents */
-    --color-accent: #255f38; /* Accent color - for highlights, interactive elements */
-    --color-light-accent: #1f7d53; /* Lighter accent - for softer highlights, button hovers */
-    --color-background-light: #f8f9fa; /* Light background - for main page background */
-    --color-text-dark: #343a40; /* Dark text - for primary text color */
-    --color-text-light: #ffffff; /* Light text - for text on dark backgrounds */
-    --bs-primary: var(--color-accent); /* Bootstrap Primary Color to Accent */
-    --bs-secondary: var(--color-secondary-dark); /* Bootstrap Secondary Color to Secondary Dark */
-    --bs-success: var(--color-light-accent); /* Bootstrap Success to Lighter Accent */
-    --bs-dark: var(--color-primary-dark); /* Bootstrap Dark to Primary Dark */
-    --bs-body-bg: var(--color-background-light); /* Bootstrap Body Background to Light Background */
-    --bs-body-color: var(--color-text-dark); /* Bootstrap Body Color to Dark Text */
+    --color-primary: #18230F; /* Dark Slate Gray (Palette Color 1) */
+    --color-secondary: #27391C; /* Dark Olive Green (Palette Color 2 - Navbar & Sidebar BG) */
+    --color-accent: #255F38; /* Forest Green (Palette Color 3) */
+    --color-highlight: #1F7D53; /* Medium Sea Green (Palette Color 4) */
+
+    /* Readability Colors */
+    --color-background: #f8fafa; /* White Smoke (Page Background) */
+    --color-text-primary: #333; /* Dark Gray for primary text (on light backgrounds) */
+    --color-text-secondary: #eee; /* Light Gray for secondary text (on dark backgrounds - Navbar, Sidebar) */
 }
 
+
+/* --------------------------------------- */
+/*               General Styles            */
+/* --------------------------------------- */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
-    background-color: var(--bs-body-bg);
-    color: var(--bs-body-color);
-    margin: 0; /* Reset default body margin */
-    padding-top: 50px; /* Example padding to avoid content behind fixed navbar if you add one later */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--color-primary);
+    color: var(--color-background);
+    margin: 0;
+    padding-bottom: 20px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    color: var(--color-primary-dark); /* Dark headings */
+.container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
+
+
+/* Typography - Headings (you can expand on this for h1, h2, etc. if needed) */
+h1, h2, h3 {
+    color: var(--color-accent); /* Example: Dark primary color for headings*/ 
+    font-weight: bolder;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+}
+
+
+
+/* --------------------------------------- */
+/*                Buttons                 */
+/* --------------------------------------- */
+.btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 1.5rem;
+    cursor: pointer;
+    display: inline-block; /* Ensure consistent button behavior */
+    font-weight: normal;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    vertical-align: middle;
+    white-space: nowrap;
+    user-select: none; /* Prevent text selection on click */
+    border: 1px solid transparent; /* Default border to manage hover/focus shifts */
+}
+
+/* Primary Button Style */
 .btn-primary {
-    background-color: var(--bs-primary);
-    border-color: var(--bs-primary);
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-text-secondary);
 }
 
-    .btn-primary:hover {
-        background-color: var(--color-light-accent);
-        border-color: var(--color-light-accent);
+    .btn-primary:hover,
+    .btn-primary:focus {
+        background-color: var(--color-highlight);
+        border-color: var(--color-highlight);
+        color: var(--color-text-secondary);
+        box-shadow: 0 0 0 0.25rem rgba(37, 125, 83, 0.5); /* Highlight color shadow on focus/hover */
     }
 
-.btn-secondary {
-    background-color: var(--bs-secondary);
-    border-color: var(--bs-secondary);
-    color: var(--color-text-light);
-}
-
-    .btn-secondary:hover {
-        background-color: var(--color-primary-dark);
-        border-color: var(--color-primary-dark);
+    .btn-primary:disabled {
+        opacity: 0.65;
+        cursor: not-allowed;
     }
 
-/* Example styling for navbar (if you add one later) */
-.navbar {
-    background-color: var(--color-secondary-dark);
+/* Secondary Button Style (example - you can add more button variations) */
+.btn-outline-secondary {
+    background-color: transparent;
+    border-color: #ced4da; /* Bootstrap default outline button border */
+    color: var(--color-text-primary);
 }
 
-.navbar-brand, .nav-link {
-    color: var(--color-text-light);
-}
-
-    .navbar-brand:hover, .nav-link:hover {
-        color: var(--color-light-accent);
+    .btn-outline-secondary:hover,
+    .btn-outline-secondary:focus {
+        background-color: #e2e6ea; /* Light background on hover/focus - Bootstrap default */
+        border-color: #d3d9df;
+        box-shadow: none; /* Remove default shadow if any */
     }
 
-/* Style for sidebar (adjust as needed) */
-.sidebar {
-    background-color: var(--color-secondary-dark);
-    color: var(--color-text-light);
-}
-
-    .sidebar .nav-link {
-        color: var(--color-text-light);
+    .btn-outline-secondary:disabled {
+        opacity: 0.65;
+        cursor: not-allowed;
     }
 
-        .sidebar .nav-link:hover, .sidebar .nav-link.active {
-            background-color: var(--color-primary-dark);
-            color: var(--color-light-accent);
-        }
-
-.card {
-    border: 1px solid rgba(0, 0, 0, 0.1); /* Light card border */
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05); /* Subtle card shadow */
-    border-radius: 0.5rem; /* Slightly rounded corners for cards */
-}
-
-.card-header {
-    background-color: rgba(0, 0, 0, 0.03); /* Very light background for card header */
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.card-footer {
-    background-color: rgba(0, 0, 0, 0.03); /* Very light background for card footer */
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-
-/* Existing card hover effect - keep this */
-.expense-card {
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth transition for transform and shadow */
-}
-
-    .expense-card.expanded-card {
-        transform: scale(1.05); /* Slightly scale up on hover */
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Add shadow on hover */
-        z-index: 1; /* Ensure hovered card is above others if overlapping */
-    }
-
-.card-text {
-    overflow: hidden; /* Clip overflowing text */
-    text-overflow: ellipsis; /* Add ellipsis (...) for overflow */
-    white-space: nowrap; /* Prevent text wrapping */
-}
-
-
-/* Sidebar Toggle Button Styling */
-.sidebar-toggler {
-    padding: 0.25rem 0.5rem;
+/* Small Button Variation */
+.btn-sm {
+    padding: 0.5rem 1rem;
     font-size: 0.875rem;
-    line-height: 1.5;
     border-radius: 0.2rem;
 }
 
-/* Collapsed Sidebar Styles */
-#sidebar.collapsed {
-    width: 4.5rem; /* Narrower width when collapsed */
+
+/* --------------------------------------- */
+/*                 Forms                   */
+/* --------------------------------------- */
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 0.6rem 0.9rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--color-text-primary);
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.3rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-    #sidebar.collapsed .nav-link span {
-        display: none; /* Hide link text when collapsed */
+    .form-control::placeholder {
+        color: #6c757d; /* Placeholder text color - Bootstrap default */
+        opacity: 1; /* Firefox */
     }
 
-    #sidebar.collapsed .nav-link {
-        padding-left: 0.75rem; /* Adjust padding when collapsed */
-        padding-right: 0.75rem;
-        text-align: center; /* Center icons */
+    .form-control:focus {
+        color: var(--color-text-primary);
+        background-color: #fff;
+        border-color: var(--color-highlight);
+        outline: 0;
+        box-shadow: 0 0 0 0.25rem rgba(37, 95, 56, 0.25); /* Highlight color shadow on focus */
     }
 
-    #sidebar.collapsed .sidebar-heading {
-        display: none; /* Hide sidebar headings when collapsed */
+    .form-control:disabled,
+    .form-control[readonly] {
+        background-color: #e9ecef;
+        opacity: 1;
     }
 
-    #sidebar.collapsed .sidebar-toggler {
-        justify-content: center; /* Center toggle button in collapsed sidebar */
+    /* Search Input Specific Style (smaller search bar) */
+    .form-control[type="search"] {
+        max-width: 200px;
+        font-size: 0.9rem;
+        padding: 0.4rem 0.75rem;
+        border-radius: 0.2rem;
     }
 
 
-/* Ensure main content adjusts when sidebar collapses */
-main {
-    margin-left: 4.5rem; /* Initial margin to accommodate sidebar */
-    transition: margin-left 0.25s ease-out; /* Smooth transition for margin change */
+/* --------------------------------------- */
+/*            Expenses Page Styles         */
+/* --------------------------------------- */
+.expenses-header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #eee;
 }
 
-    main.sidebar-expanded {
-        margin-left: 17rem; /* Adjust this to your sidebar's expanded width */
+.expenses-heading {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.expenses-actions {
+    gap: 1rem;
+    display: flex; /* Ensure it's flex to use gap property */
+    align-items: center; /* Vertically align items */
+}
+
+.search-container {
+    width: auto; /* Adjust if needed */
+}
+
+/* Filters and Sorting */
+.filters-container {
+    margin-bottom: 1.5rem;
+    display: flex; /* Enable flexbox for layout control */
+    flex-wrap: wrap; /* Allow filters to wrap on smaller screens */
+    align-items: center; /* Vertically align filter items */
+    gap: 0.5rem; /* Spacing between filter groups and buttons */
+}
+
+    .filters-container .btn-group,
+    .filters-container .btn {
+        margin-right: 0; /* Reset right margin, use gap for spacing */
+        margin-bottom: 0.5rem; /* Spacing below buttons/groups when wrapping */
+    }
+
+    .filters-container .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
     }
 
 
-@media (min-width: 768px) { /* For medium and larger screens */
-    #sidebar.collapsed {
-        width: 4.5rem; /* Keep collapsed width on larger screens */
+/* Expense Card Styles */
+.expense-card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.08);
+    border: none;
+    display: flex; /* Use flex layout for card */
+    flex-direction: column; /* Stack header, body, footer vertically */
+    height: 100%; /* Ensure cards take full height of grid cell */
+}
+
+    .expense-card:hover {
+        transform: scale(1.03);
+        box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15);
     }
 
-    main {
-        margin-left: 17rem; /* Default sidebar width on larger screens */
+    .expense-card .card-header {
+        background-color: var(--color-background);
+        border-bottom: none;
+        padding-bottom: 0;
     }
 
-        main.sidebar-expanded {
-            margin-left: 17rem; /* No change in margin when "expanded" on larger screens (sidebar is always visible) */
+    .expense-card .card-title {
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: var(--color-secondary);
+    }
+
+    .expense-card .badge.bg-primary {
+        background-color: var(--color-accent) !important;
+        padding: 0.5rem 0.75rem;
+        border-radius: 0.3rem;
+    }
+
+    .expense-card .card-body {
+        flex-grow: 1; /* Allow card body to take remaining space */
+        display: flex;
+        flex-direction: column; /* Stack body content vertically */
+        justify-content: space-between; /* Distribute space between content and footer */
+    }
+
+
+    .expense-card .card-subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+        color: #6c757d; /* Bootstrap muted text color for subtitle */
+    }
+
+    .expense-card .card-text {
+        font-size: 1rem;
+        margin-bottom: 0.75rem; /* Add some bottom margin to card text */
+    }
+
+    .expense-card .card-footer {
+        background-color: var(--color-background);
+        border-top: 1px solid #eee;
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+        text-align: right;
+        margin-top: 1rem; /* Add margin to separate footer visually from body content */
+    }
+
+        .expense-card .card-footer .btn-sm {
+            padding: 0.3rem 0.6rem;
+            font-size: 0.85rem;
         }
+
+    /* Expanded card style (on hover) */
+    .expense-card.expanded-card {
+        transform: scale(1.05);
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+        z-index: 10;
+    }
+
+
+/* --------------------------------------- */
+/*               Sidebar Styles            */
+/* --------------------------------------- */
+.sidebar {
+    background-color: var(--color-secondary);
+    color: var(--color-text-secondary);
+    width: 200px;
+    height: 85.5vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: inherit;
+    transition: transform 0.3s ease-in-out;
+    overflow-x: hidden; /* Prevent horizontal scrollbar if content overflows */
+    z-index: 100; /* Ensure sidebar is above main content if needed */
+}
+
+
+    .sidebar .website-name {
+        font-size: 2rem;
+        font-weight: bolder;
+        text-align: left;
+        color: var(--color-accent);
+        /*        ,padding: 0px 0px 0px 0px;*/
+        display: block;
+        margin-bottom: 0px;
+    }
+
+        .sidebar .website-name i {
+            
+            margin-right: 2px;
+            font-size: 2rem;
+            vertical-align: middle;
+        }
+
+
+.sidebar-nav {
+    padding: 0px;
+}
+
+    .sidebar-nav .nav-item {
+        margin-bottom: 0px; 
+        text-decoration: underline;
+    }
+
+    .sidebar-nav .nav-link {
+        display: block;
+        color: var(--color-text-secondary);
+        font-size: 0.95rem;
+        padding: 0.6rem 1rem;
+        border-radius: 0.25rem;
+        text-decoration: none;
+        transition: background-color 0.2s ease; /* Slightly faster hover transition */
+        display: flex; /* Use flex for icon and text alignment */
+        align-items: center; /* Vertically align icon and text */
+    }
+
+        .sidebar-nav .nav-link:hover,
+        .sidebar-nav .nav-link:focus {
+            background-color: #18230F;
+        }
+
+        .sidebar-nav .nav-link.active {
+            background-color: rgba(var(--color-text-secondary-rgb), 0.1); /* Slightly more prominent active state */
+        }
+
+        .sidebar-nav .nav-link i {
+            margin-right: 8px;
+            width: 18px;
+            display: inline-block;
+            text-align: center;
+            font-size: 1.1rem; /* Slightly larger icons in sidebar */
+        }
+
+
+.sidebar-heading {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 8px 20px;
+    margin-top: 0rem; /* Reduced top margin slightly */
+    margin-bottom: 0.4rem;
+    border-top: 1px solid rgba(var(--color-text-secondary-rgb), );
+}
+
+    .sidebar-heading span {
+        font-weight: normal;
+    }
+
+    .sidebar-heading .link-secondary {
+        color: var(--color-text-secondary);
+        opacity: 0.7;
+    }
+
+        .sidebar-heading .link-secondary:hover,
+        .sidebar-heading .link-secondary:focus {
+            opacity: 1;
+        }
+
+
+.sidebar-footer {
+    padding: 15px 20px;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+
+/* Sidebar Toggle Button Styles */
+.sidebar-toggler {
+    background-color: transparent;
+    border: none;
+    color: var(--color-text-secondary);
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+    cursor: pointer;
+}
+
+    .sidebar-toggler:hover,
+    .sidebar-toggler:focus {
+        opacity: 1;
+        color: var(--color-text-secondary);
+        outline: none;
+    }
+
+
+
+.sidebar-toggle-label {
+    background-color: var(--color-secondary);
+    color: var(--color-text-secondary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease; /* Add transition for toggle button */
+}
+
+    .sidebar-toggle-label:hover,
+    .sidebar-toggle-label:focus {
+        background-color: var(--color-secondary); /* Keep same color, but you can highlight slightly */
+        opacity: 0.9; /* Example: slightly reduce opacity on hover */
+    }
+
+
+    .sidebar-toggle-label i {
+        margin: 0 5px;
+    }
+
+        .sidebar-toggle-label i:last-child {
+            display: none;
+        }
+
+
+.sidebar-toggle-checkbox:checked + .sidebar-toggle-label i:first-child {
+    display: none;
+}
+
+.sidebar-toggle-checkbox:checked + .sidebar-toggle-label i:last-child {
+    display: inline-block;
+}
+
+.sidebar-toggle-checkbox:checked ~ .sidebar {
+    transform: translateX(-100%);
+}
+
+
+/* --------------------------------------- */
+/*               Navbar Styles             */
+/* --------------------------------------- */
+#navbar-top {
+    background-color: var(--color-secondary); /* Sidebar color applied to Navbar */
+    padding-top: 0.5rem; /* Reduced navbar top padding */
+    padding-bottom: 0.5rem; /* Reduced navbar bottom padding */
+}
+
+    #navbar-top .navbar-brand {
+        color: var(--color-accent);
+        font-weight: bolder;
+        font-size: 1.5rem; /* Reduced navbar brand font size */
+    }
+
+    #navbar-top .navbar-nav .nav-link {
+        color: var(--color-text-secondary);
+        padding-left: 0.2rem; /* Reduced navbar link left padding */
+        padding-right: 0.7rem; /* Reduced navbar link right padding */
+        font-size: 0.9rem; /* Reduced navbar link font size */
+    }
+
+        .navbar-dark .navbar-nav .nav-link:hover,
+        .navbar-dark .navbar-nav .nav-link:focus {
+            color: rgba(var(--color-text-secondary-rgb), 0.9);
+        }
+
+    .navbar-dark .navbar-toggler {
+        border-color: rgba(var(--color-text-secondary-rgb), 0.3); /* Example: Lighter border for toggler */
+    }
+
+    .navbar-dark .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(238, 238, 238, 0.75)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); /* Example: Light icon for toggler - adjust color as needed */
+    }
+
+
+
+/* --------------------------------------- */
+/*                Footer Styles             */
+/* --------------------------------------- */
+footer {
+    clear: both; /* Ensure footer is below main content */
+    padding: 10px 0;
+    text-align: left;
+    background-color: var(--color-secondary);
+    color: var(--color-text-secondary);
+    /* Fixed Positioning for Footer */
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 99; /* Ensure footer is above main content but below sidebar if needed */
+    border-top: 2px solid white; /* White separation line above footer */
+}
+
+.container.footer-container { /* Add class to container in footer for specific styling */
+    max-width: 1200px; /* Match container width if needed */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* --------------------------------------- */
+/*          Main Content Wrapper Styles    */
+/* --------------------------------------- */
+.main-content-wrapper {
+    margin-left: auto; /* Match sidebar width for larger screens */
+    overflow-y: auto; /* Enable vertical scrolling within this wrapper */
+    height: calc(100vh - 60px); /* Full viewport height minus header (adjust 60px if needed for your header/navbar height) */
+    position: relative; /* Needed for proper z-index and positioning context if needed */
+}
+
+/* --------------------------------------- */
+/*           Responsive Styles           */
+/* --------------------------------------- */
+/* Default: Sidebar visible, Navbar hidden (for larger screens) */
+#navbar-top {
+    display: none; /* Initially hide navbar on larger screens */
+}
+
+.main-content {
+    /*margin-left: 200px;*/ /* Match sidebar width */
+    padding-bottom: 80px; /* Add padding at the bottom to prevent main content overlap with fixed footer */
+    border-right: 2px solid white; /* White separation line on the right of main content */
+    /*min-height: calc(100vh - 60px);*/ /* Example: Ensure main content takes at least viewport height minus header if any, adjust 60px as needed */
+}
+
+
+@media (max-width: 768px) { /* For smaller screens (tablets and below) */
+    #sidebar {
+        display: none; /* Hide sidebar on smaller screens */
+    }
+
+    #navbar-top {
+        display: flex; /* Show navbar on smaller screens */
+    }
+
+    .main-content-wrapper { /* Styles for main-content-wrapper on small screens */
+        margin-left: auto; /* Reset margin */
+        padding-top: 70px; /* Padding below fixed navbar */
+        height: auto; /* Let height adjust to content on small screens */
+        overflow-y: visible; /* Disable vertical scroll on wrapper for small screens, content scrolls with page */
+    }
+
+    .main-content {
+        /*margin-left: 0;*/ /* Reset main content margin */
+        /*padding-top: 70px;*/ /* Add padding below fixed navbar to prevent overlap */
+        padding-bottom: 80px; /* Add padding at the bottom to prevent main content overlap with fixed footer */
+        border-right: none; /* Remove sidebar separator on small screens */
+        /*min-height: calc(100vh - 130px);*/ /* Example: Adjust min-height for small screens considering navbar and footer height, adjust 130px as needed */
+    }
+
+    .container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .expenses-heading {
+        font-size: 4rem;
+    }
+
+    .filters-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+        .filters-container .btn-group
+        .filters-container .btn {
+            margin-right: 0;
+            width: 100%;
+        }
+
+    .expenses-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-container input[type="search"] {
+        max-width: 100%;
+    }
+}
+
+/* --------------------------------------- */
+/*                Sidebar Separator        */
+/* --------------------------------------- */
+#sidebar {
+    border-right: 2px solid white; /* White separation line on the right of sidebar */
 }
