@@ -1,22 +1,22 @@
-﻿@* BudgetTracker.Web/Views/Shared/_Layout.cshtml *@
+﻿@* BudgetTrackerWeb/Views/Shared/_Layout.cshtml *@
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - BudgetBuddy</title>  @* Updated title to include "BudgetBuddy" *@
+    <title>@ViewData["Title"] - BudgetBuddy</title>
     <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/BudgetTrackerWebApp.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.18.0/font/bootstrap-icons.css"> @* Bootstrap Icons CDN *@
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.18.0/font/bootstrap-icons.css">
 </head>
 <body>
 
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
-            @* Example dark navbar - adjust if needed *@
+        <nav id="navbar-top" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark  mb-3 fixed-top">
+            @* Fixed top navbar for small screens - Initially hidden on larger screens via CSS *@
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">BudgetBuddy</a> @* Website name in navbar (if you want a navbar) *@
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">BudgetBuddy</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -24,10 +24,28 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Dashboard">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Expenses">Expenses</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Budgets">Budgets</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Reports">Reports</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Profile">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " asp-controller="Auth" asp-action="Login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " asp-controller="Auth" asp-action="Register">Register</a>
                         </li>
                     </ul>
                 </div>
@@ -36,107 +54,105 @@
     </header>
 
 
+
     <div class="container-fluid">
         <div class="row">
-            <div class="d-flex align-items-center justify-content-between px-3 mb-3">
-                <span class="fs-5 fw-bold text-white">
-                    <i class="bi bi-piggy-bank-fill me-2"></i> BudgetBuddy
-                </span>
-                <button class="btn btn-sm btn-outline-light sidebar-toggler" aria-label="Toggle sidebar">
-                    <i class="bi bi-chevron-left"></i>
-                </button>
-            </div>
-            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-                @* Sidebar with collapse class for toggling *@
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block  sidebar collapse">
+                @* Sidebar - Initially visible on larger screens, hidden on smaller screens via CSS *@
                 <div class="position-sticky pt-3">
                     <div class="d-flex align-items-center justify-content-between px-3 mb-3">
-                        <span class="fs-5 fw-bold text-white">
-                            <i class="bi bi-piggy-bank-fill me-2"></i> BudgetBuddy @* Website name with icon in sidebar *@
+                        <span class="fs-5 fw-bold website-name">
+                            <i class="bi bi-piggy-bank-fill me-2"></i> BudgetBuddy
                         </span>
                         <button class="btn btn-sm btn-outline-light sidebar-toggler" aria-label="Toggle sidebar">
-                            @* Sidebar toggle button *@
                             <i class="bi bi-chevron-left"></i>
                         </button>
                     </div>
 
-                    <ul class="nav flex-column">
+                    <ul class="nav flex-column sidebar-nav">
                         <li class="nav-item">
                             <a class="nav-link active" asp-controller="Home" asp-action="Index">
-                                <i class="bi bi-house-fill me-2"></i> Home @* Home icon *@
+                                <i class="bi bi-house-fill me-2"></i> Home
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Home" asp-action="Dashboard">
-                                <i class="bi bi-speedometer2 me-2"></i> Dashboard @* Dashboard icon *@
+                                <i class="bi bi-speedometer2 me-2"></i> Dashboard
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Home" asp-action="Expenses">
-                                <i class="bi bi-receipt me-2"></i> Expenses @* Expenses icon *@
+                                <i class="bi bi-receipt me-2"></i> Expenses
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Home" asp-action="Budgets">
-                                <i class="bi bi-wallet2 me-2"></i> Budgets @* Budgets icon *@
+                                <i class="bi bi-wallet2 me-2"></i> Budgets
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Home" asp-action="Reports">
-                                <i class="bi bi-bar-chart-line-fill me-2"></i> Reports @* Reports icon *@
+                                <i class="bi bi-bar-chart-line-fill me-2"></i> Reports
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Home" asp-action="Profile">
-                                <i class="bi bi-person-circle me-2"></i> Profile @* Profile icon *@
+                                <i class="bi bi-person-circle me-2"></i> Profile
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Auth" asp-action="Login">
-                                <i class="bi bi-box-arrow-in-right me-2"></i> Login @* Login icon *@
+                                <i class="bi bi-box-arrow-in-right me-2"></i> Login
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Auth" asp-action="Register">
-                                <i class="bi bi-person-plus-fill me-2"></i> Register @* Register icon *@
+                                <i class="bi bi-person-plus-fill me-2"></i> Register
                             </a>
                         </li>
                     </ul>
 
-                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                        <span>Saved reports</span>
-                        <a class="link-secondary" href="#" aria-label="Add a new report">
-                            <span data-feather="plus-circle"></span>
-                        </a>
-                    </h6>
-                    <ul class="nav flex-column mb-2">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="bi bi-file-earmark-text-fill me-2"></i> Current month @* Report icon *@
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="bi bi-file-earmark-text-fill me-2"></i> Last quarter @* Report icon *@
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="bi bi-file-earmark-text-fill me-2"></i> Year-end sale @* Report icon *@
-                            </a>
-                        </li>
-                    </ul>
+                    @* <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted"> *@
+                    @*     <span>Saved reports</span> *@
+                    @*     <a class="link-secondary" href="#" aria-label="Add a new report"> *@
+                    @*         <span data-feather="plus-circle"></span> *@
+                    @*     </a> *@
+                    @* </h6> *@
+                    @* <ul class="nav flex-column mb-2 sidebar-nav"> *@
+                    @*     <li class="nav-item"> *@
+                    @*         <a class="nav-link" href="#"> *@
+                    @*             <i class="bi bi-file-earmark-text-fill me-2"></i> Current month *@
+                    @*         </a> *@
+                    @*     </li> *@
+                    @*     <li class="nav-item"> *@
+                    @*         <a class="nav-link" href="#"> *@
+                    @*             <i class="bi bi-file-earmark-text-fill me-2"></i> Last quarter *@
+                    @*         </a> *@
+                    @*     </li> *@
+                    @*     <li class="nav-item"> *@
+                    @*         <a class="nav-link" href="#"> *@
+                    @*             <i class="bi bi-file-earmark-text-fill me-2"></i> Year-end sale *@
+                    @*         </a> *@
+                    @*     </li> *@
+                    @* </ul> *@
+                </div>
+                <div class="sidebar-footer">
+                    <button class="sidebar-toggler btn btn-sm btn-outline-light" aria-label="Toggle sidebar">
+                        <i class="bi bi-chevron-left"></i>
+                    </button>
                 </div>
             </nav>
-
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                @RenderBody() @* Where page-specific content will be rendered *@
-            </main>
+            <div class="main-content-wrapper">
+                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
+                @RenderBody()
+                </main>
+            </div>
         </div>
     </div>
 
 
     <footer class="border-top footer text-muted">
-        <div class="container">
+        <div class="container footer-container">
             &copy; 2025 - BudgetBuddy - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
