@@ -3,51 +3,60 @@
     ViewData["Title"] = "Expenses";
 }
 
-<h1>Expenses</h1>
-
-<div class="d-flex justify-content-between align-items-center mb-3">
-    <div>
-        <input type="search" class="form-control form-control-sm" placeholder="Search Expenses...">
-        <div class="mt-2">
-            <div class="btn-group">
-                <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    Category
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">All</a></li>
-                    <li><a class="dropdown-item" href="#">Food</a></li>
-                    <li><a class="dropdown-item" href="#">Transport</a></li>
-                    <li><a class="dropdown-item" href="#">Utilities</a></li>
-                </ul>
-            </div>
-            <div class="btn-group ms-2">
-                <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    Date Range
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">All Dates</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">Last Month</a></li>
-                </ul>
-            </div>
-            <div class="btn-group ms-2" role="group" aria-label="Sorting">
-                <button type="button" class="btn btn-outline-secondary">Sort Date (Newest)</button>
-                <button type="button" class="btn btn-outline-secondary">Sort Date (Oldest)</button>
-                <button type="button" class="btn btn-outline-secondary">Sort Amount (High)</button>
-                <button type="button" class="btn btn-outline-secondary">Sort Amount (Low)</button>
+<div class="container">
+    @* Added container for better layout control *@
+    <div class="expenses-header d-flex justify-content-between align-items-start mb-3">
+        @* Renamed and adjusted alignment class *@
+        <div class="expenses-actions d-flex align-items-center">
+            @* Grouped actions together *@
+            <a asp-action="AddExpense" class="btn btn-primary me-2">
+                <i class="bi bi-plus-lg"></i> Add New Expense
+            </a>
+            <div class="search-container ms-2">
+                @* Container for search input, for styling *@
+                <input type="search" class="form-control form-control-sm" placeholder="Search Expenses...">
             </div>
         </div>
+        <h1 class="expenses-heading">Expenses</h1> @* Applied class for heading style *@
     </div>
-    <div>
-        <a asp-action="AddExpense" class="btn btn-primary">Add New Expense</a>  @* Button to Add Expense *@
+
+    <div class="filters-container mb-3">
+        @* Container for filters *@
+        <div class="btn-group">
+            <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                Category
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">All</a></li>
+                <li><a class="dropdown-item" href="#">Food</a></li>
+                <li><a class="dropdown-item" href="#">Transport</a></li>
+                <li><a class="dropdown-item" href="#">Utilities</a></li>
+            </ul>
+        </div>
+        <div class="btn-group ms-2">
+            <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                Date Range
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">All Dates</a></li>
+                <li><a class="dropdown-item" href="#">This Month</a></li>
+                <li><a class="dropdown-item" href="#">Last Month</a></li>
+            </ul>
+        </div>
+        <div class="btn-group ms-2" role="group" aria-label="Sorting">
+            <button type="button" class="btn btn-outline-secondary">Sort Date (Newest)</button>
+            <button type="button" class="btn btn-outline-secondary">Sort Date (Oldest)</button>
+            <button type="button" class="btn btn-outline-secondary">Sort Amount (High)</button>
+            <button type="button" class="btn btn-outline-secondary">Sort Amount (Low)</button>
+        </div>
     </div>
-</div>
 
 
-<div id="expenses-container" class="row row-cols-1 row-cols-md-3 g-4">
-    @* Container for expense cards - using Bootstrap grid for responsive layout *@
-    @* Expense cards will be dynamically added here by JavaScript *@
-    <p id="no-expenses-message" style="display:none;">No expenses recorded yet.</p> @* Initially hidden *@
+    <div id="expenses-container" class="row row-cols-1 row-cols-md-3 g-4">
+        @* Container for expense cards - using Bootstrap grid for responsive layout *@
+        @* Expense cards will be dynamically added here by JavaScript *@
+        <p id="no-expenses-message" style="display:none;">No expenses recorded yet.</p> @* Initially hidden *@
+    </div>
 </div>
 
 
