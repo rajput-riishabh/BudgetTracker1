@@ -32,7 +32,7 @@ namespace BudgetTrackerAPI.Services
                 new Claim(ClaimTypes.Email, user.Email),   // Email
                 new Claim(ClaimTypes.Role, user.Role)     // User Role
                 }),
-                Expires = DateTime.UtcNow.AddHours(2), // Token expiration time (adjust as needed)
+                Expires = DateTime.UtcNow.AddMinutes(60), // Token expiration time (adjust as needed)
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
                 Issuer = _issuer,
                 Audience = _audience

@@ -1,0 +1,212 @@
+﻿@model List<BudgetTrackerWebApp.Controllers.Expense>  //@* **Important: Set the model type to List<Expense>** *@
+@{
+    ViewData["Title"] = "Expenses";
+}
+
+<div class="container">
+    @* Added container for better layout control *@
+    <div class="expenses-header d-flex justify-content-between align-items-start mb-3">
+        @* Renamed and adjusted alignment class *@
+        <div class="expenses-actions d-flex align-items-center">
+            @* Grouped actions together *@
+            <a asp-action="AddExpense" asp-controller="Expenses" class="btn btn-primary me-2">
+                <i class="bi bi-plus-lg"></i> Add New Expense
+            </a>
+            <div class="search-container ms-2">
+                @* Container for search input, for styling *@
+                <input type="search" class="form-control form-control-sm" placeholder="Search Expenses...">
+            </div>
+        </div>
+        <h1 class="expenses-heading">Expenses</h1> @* Applied class for heading style *@
+    </div>
+
+    <div class="filters-container mb-3">
+        @* Container for filters *@
+        <div class="btn-group">
+            <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                Category
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">All</a></li>
+                <li><a class="dropdown-item" href="#">Food</a></li>
+                <li><a class="dropdown-item" href="#">Transport</a></li>
+                <li><a class="dropdown-item" href="#">Utilities</a></li>
+            </ul>
+        </div>
+        <div class="btn-group ms-2">
+            <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                Date Range
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">All Dates</a></li>
+                <li><a class="dropdown-item" href="#">This Month</a></li>
+                <li><a class="dropdown-item" href="#">Last Month</a></li>
+            </ul>
+        </div>
+        <div class="btn-group ms-2" role="group" aria-label="Sorting">
+            <button type="button" class="btn btn-outline-secondary">Sort Date (Newest)</button>
+            <button type="button" class="btn btn-outline-secondary">Sort Date (Oldest)</button>
+            <button type="button" class="btn btn-outline-secondary">Sort Amount (High)</button>
+            <button type="button" class="btn btn-outline-secondary">Sort Amount (Low)</button>
+        </div>
+    </div>
+
+
+    <div id="expenses-container" class="row row-cols-1 row-cols-md-3 g-4">
+        @* Container for expense cards - using Bootstrap grid for responsive layout *@
+        @* Expense cards will be dynamically added here by Razor from Model *@
+
+        @if (ViewData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger" role="alert">
+                @ViewData["ErrorMessage"]
+            </div>
+        }
+        else if (Model == null || Model.Count == 0)
+        {
+            <p id="no-expenses-message">No expenses recorded yet.</p>
+        }
+        else
+        {   @using System.Diagnostics
+            @foreach (var expense in Model)
+            {
+                Debug.WriteLine($"Expense ID: {expense.ExpenseId}, Date: {expense.Date}, Description: {expense.Description}"); // Add this logging line
+               string formattedDate = expense.Date.ToString("ddd, dd MMMMyyyy") ?? "Date N/A"; // Format date server-side
+                <div class="col">
+                    <div class="card h-100 expense-card" style="cursor:pointer;">
+                        <div class="card-header">
+                            <h5 class="card-title badge bg-primary">@expense.CategoryName</h5>
+                        </div>
+                        <div class="card-body" style="background-color: #1B263B; color: white; border-radius: 8px; padding: 10px;">
+                            <div style="background-color: rgba(255, 255, 255, 0.1); border-radius: 5px; padding: 8px; margin-bottom: 8px;">
+                                <h6 class="card-subtitle mb-0 text-light"><strong>Date:</strong> @formattedDate</h6>
+                            </div>
+                            <div style="background-color: rgba(255, 255, 255, 0.1); border-radius: 5px; padding: 8px; margin-bottom: 8px;">
+                                <p class="card-text mb-0"><strong>Description:</strong> @(expense.Description != null && expense.Description.Length > 50 ? expense.Description.Substring(0, 50) + "..." : expense.Description)</p>
+                            </div>
+                            <div style="background-color: rgba(255, 255, 255, 0.1); border-radius: 5px; padding: 8px; margin-bottom: 0px;">
+                                <p class="card-text mb-0" style="font-size: 1.2em; font-weight: bold;"><strong>Amount:</strong> ₹@expense.Amount</p>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-light border-top-0">
+                            <button class="btn btn-sm btn-outline-info edit-expense-btn" style="font-size: 1.1rem;" data-expense-id="@expense.ExpenseId">Edit</button>
+                            <button class="btn btn-sm btn-outline-danger delete-expense-btn ms-2" style="font-size: 1.1rem;" data-expense-id="@expense.ExpenseId">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+            return null; // Cookie not found
+        }
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+           attachEditExpenseButtonListeners(); // Call function to attach event listeners after cards are created
+            attachDeleteExpenseButtonListeners(); // Attach listeners for Delete buttons
+        });                      
+
+        function attachEditExpenseButtonListeners() {
+            const editButtons = document.querySelectorAll('.edit-expense-btn'); // Select all edit buttons
+            editButtons.forEach(button => {
+                button.addEventListener('click', handleEditExpenseClick); // Add click listener to each button
+            });
+        }
+
+        function handleEditExpenseClick(event) {
+            const expenseId = event.target.dataset.expenseId; // Get expenseId from data attribute
+            if (expenseId) {
+                // Redirect to AddExpense page with expenseId as a query parameter
+                window.location.href = `@Url.Action("AddExpense", "Expenses")?expenseId=${expenseId}`;
+            } else {
+                console.error('Expense ID not found for edit button.');
+            }
+        }
+
+        function attachDeleteExpenseButtonListeners() {
+            const deleteButtons = document.querySelectorAll('.delete-expense-btn'); // Select all delete buttons
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', handleDeleteExpenseClick); // Add click listener to each button
+            });
+        }
+
+        async function handleDeleteExpenseClick(event) {
+            const expenseId = event.target.dataset.expenseId; // Get expenseId from data attribute
+            if (!expenseId) {
+                console.error('Expense ID not found for delete button.');
+                return;
+            }
+
+            if (confirm('Are you sure you want to delete this expense?')) { // Confirmation dialog
+                try {
+                    const response = await fetch(`http://localhost:5285/api/Expenses/${expenseId}`, { // API endpoint to delete expense
+                        method: 'DELETE',
+                        headers: {
+                            'Authorization': 'Bearer ' + getCookie('authToken'),
+                            'Content-Type': 'application/json'
+                        }
+                    });
+
+                    if (response.ok) {
+                        // Deletion successful
+                        console.log(`Expense ID ${expenseId} deleted successfully.`);
+                        // Remove the expense card from the UI
+                        const expenseCardToRemove = event.target.closest('.col'); // Find the parent card column
+                        if (expenseCardToRemove) {
+                            expenseCardToRemove.remove(); // Remove the column, which contains the card
+                        }
+                        displaySuccessMessage('Expense deleted successfully!'); // Show success message
+
+                        // Optionally, reload expenses to refresh the list completely:
+                        // loadExpenses(); // Consider if full reload is needed, or just removing card is enough UX
+
+
+                    } else {
+                        // Deletion failed
+                        console.error('Failed to delete expense:', response.status, response.statusText);
+                        displayErrorMessage('Failed to delete expense. Please try again.'); // Show error message
+                    }
+
+                } catch (error) {
+                    console.error('Error deleting expense:', error);
+                    displayErrorMessage('Error deleting expense. Network error.'); // Show network error message
+                }
+            } // If user cancels confirm, do nothing
+        }
+
+
+        function displaySuccessMessage(message) {
+            const successDiv = document.getElementById('form-success'); // Reusing the success div from AddExpense page
+            successDiv.textContent = message;
+            successDiv.style.display = 'block';
+            setTimeout(() => {
+                successDiv.style.display = 'none'; // Hide after a delay (optional)
+            }, 3000); // Hide after 3 seconds
+        }
+
+        function displayErrorMessage(message) {
+            const errorDiv = document.getElementById('form-error'); // Reusing error div from AddExpense page
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+            setTimeout(() => {
+                errorDiv.style.display = 'none'; // Hide after a delay (optional)
+            }, 3000); // Hide after 3 seconds
+        }
+
+
+
+    </script>
+}

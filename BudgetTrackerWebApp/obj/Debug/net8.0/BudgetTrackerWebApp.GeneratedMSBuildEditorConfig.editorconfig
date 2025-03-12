@@ -28,16 +28,28 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/2380141/OneDrive - Cognizant/Documents/community_practice/BudgetTrackerAPI/BudgetTrackerWebApp/Views/Dashboard/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2380141/OneDrive - Cognizant/Documents/community_practice/BudgetTrackerAPI/BudgetTrackerWebApp/Views/Expenses/AddExpense.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhwZW5zZXNcQWRkRXhwZW5zZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2380141/OneDrive - Cognizant/Documents/community_practice/BudgetTrackerAPI/BudgetTrackerWebApp/Views/Expenses/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhwZW5zZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2380141/OneDrive - Cognizant/Documents/community_practice/BudgetTrackerAPI/BudgetTrackerWebApp/Views/Home/AddIncome.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZGRJbmNvbWUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/2380141/OneDrive - Cognizant/Documents/community_practice/BudgetTrackerAPI/BudgetTrackerWebApp/Views/Home/Budgets.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxCdWRnZXRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/2380141/OneDrive - Cognizant/Documents/community_practice/BudgetTrackerAPI/BudgetTrackerWebApp/Views/Home/Dashboard.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEYXNoYm9hcmQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/2380141/OneDrive - Cognizant/Documents/community_practice/BudgetTrackerAPI/BudgetTrackerWebApp/Views/Home/Expenses.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFeHBlbnNlcy5jc2h0bWw=
+[C:/Users/2380141/OneDrive - Cognizant/Documents/community_practice/BudgetTrackerAPI/BudgetTrackerWebApp/Views/Home/Income.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmNvbWUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/2380141/OneDrive - Cognizant/Documents/community_practice/BudgetTrackerAPI/BudgetTrackerWebApp/Views/Home/Index.cshtml]

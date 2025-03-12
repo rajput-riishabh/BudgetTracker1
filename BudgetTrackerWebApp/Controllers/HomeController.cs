@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using BudgetTrackerWebApp.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace BudgetTrackerWebApp.Controllers
 {
@@ -11,6 +12,7 @@ namespace BudgetTrackerWebApp.Controllers
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+            
         }
 
         public IActionResult Index()
@@ -32,12 +34,12 @@ namespace BudgetTrackerWebApp.Controllers
         // **New Placeholder Actions for Sidebar Links:**
         public IActionResult Dashboard()
         {
-            return View(); // Returns the Dashboard.cshtml view
+            return RedirectToAction("Index", "Dashboard"); // Redirect to DashboardController's Index action
         }
         public IActionResult Expenses()
         {
-            //ViewData["Title"] = "Expenses"; // Set page title for Expenses view
-            return View(); // Will look for Views/Home/Expenses.cshtml
+            // Redirect to the Index action of the ExpensesController
+            return RedirectToAction("Index", "Expenses");
         }
 
         public IActionResult Budgets()
@@ -51,7 +53,10 @@ namespace BudgetTrackerWebApp.Controllers
             ViewData["Title"] = "Reports"; // Set page title for Reports view
             return View(); // Will look for Views/Home/Reports.cshtml
         }
-
+        public IActionResult Income()
+        {
+            return View();
+        }
         public IActionResult Profile()
         {
             ViewData["Title"] = "Profile"; // Set page title for Profile view

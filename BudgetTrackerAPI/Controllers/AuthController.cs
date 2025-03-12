@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity; // For PasswordHasher
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization; // Add this for FirstOrDefaultAsync
+using Microsoft.AspNetCore.Http;
+using System.Diagnostics;
 
 namespace BudgetTrackerAPI.Controllers
 {
@@ -92,23 +94,63 @@ namespace BudgetTrackerAPI.Controllers
             // Generate JWT token
             var token = _jwtService.GenerateToken(user);
 
-            return Ok(new { Token = token, Message = "Login successful" }); // Return token and success message
-        }
+            Debug.WriteLine("AuthController.Login: About to set authToken cookie..."); // **DEBUG LOGGING BEFORE**
 
-        [HttpGet("dashboarddata")] // New endpoint for dashboard data
-        [Authorize] //  <--  Protect this endpoint with JWT Authentication
-        public IActionResult GetDashboardData()
-        {
-            // In a real application, you would fetch actual dashboard data from services/database here
-            var dashboardData = new
+            // **SET AUTHENTICATION COOKIE HERE**
+            var cookieOptions = new CookieOptions
             {
-                WelcomeMessage = "Welcome to your Budget Dashboard, " + User.Identity?.Name, // Example: Get username from token (if available)
-                TotalExpensesThisMonth = 1500,
-                BudgetRemaining = 500
-                // ... more dashboard data ...
+                HttpOnly = true, // Important for security: Cookie cannot be accessed by client-side JavaScript
+                Secure = false,   // Recommended: Set to true in production for HTTPS
+                SameSite = SameSiteMode.Strict, // Recommended: Helps prevent CSRF attacks
+                Expires = DateTime.UtcNow.AddMinutes(60) // Cookie expiration should match token expiration (or be longer if needed)
             };
+            HttpContext.Response.Cookies.Append("authToken", token, cookieOptions);
 
-            return Ok(dashboardData); // Return sample dashboard data as JSON
+            Debug.WriteLine("AuthController.Login: authToken cookie SET."); // **DEBUG LOGGING AFTER**
+
+            return Ok(new { Message = "Login successful" }); // Remove Token from the JSON response, as it's in the cookie now
         }
+
+
+        //[AllowAnonymous]
+        //[HttpGet("testcookie")]
+        //public IActionResult TestCookieSet()
+        //{
+        //    Debug.WriteLine("AuthController.TestCookieSet: About to set isolated test cookie...");
+
+        //    var cookieOptions = new CookieOptions
+        //    {
+        //        HttpOnly = true,
+        //        Secure = false,
+        //        SameSite = SameSiteMode.None,
+        //        Expires = DateTime.UtcNow.AddMinutes(5)
+        //    };
+        //    HttpContext.Response.Cookies.Append("isolatedTestCookie", "isolatedTestValue", cookieOptions);
+
+        //    Debug.WriteLine("AuthController.TestCookieSet: isolatedTestCookie SET.");
+        //    return Ok(new { Message = "Test Cookie Set (Isolated)" });
+        //}
+
+
+
+
+        //[HttpPost("login")]
+        //public async Task<IActionResult> Login([FromBody] LoginRequestDto model)
+        //{
+        //    Debug.WriteLine("AuthController.Login: Barebones - About to set test cookie...");
+
+        //    var cookieOptions = new CookieOptions
+        //    {
+        //        HttpOnly = true,
+        //        Secure = false,
+        //        SameSite = SameSiteMode.None,
+        //        Expires = DateTime.UtcNow.AddMinutes(5)
+        //    };
+        //    HttpContext.Response.Cookies.Append("testCookie", "testValue", cookieOptions);
+
+        //    Debug.WriteLine("AuthController.Login: Barebones - testCookie SET.");
+
+        //    return Ok(new { Message = "Login successful (Test Cookie Set)" });
+        //}
     }
 }

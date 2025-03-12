@@ -8,6 +8,13 @@ C:\Users\2380141\OneDrive - Cognizant\Documents\community_practice\BudgetTracker
 C:\Users\2380141\OneDrive - Cognizant\Documents\community_practice\BudgetTrackerAPI\BudgetTrackerWebApp\bin\Debug\net8.0\BudgetTrackerWebApp.runtimeconfig.json
 C:\Users\2380141\OneDrive - Cognizant\Documents\community_practice\BudgetTrackerAPI\BudgetTrackerWebApp\bin\Debug\net8.0\BudgetTrackerWebApp.dll
 C:\Users\2380141\OneDrive - Cognizant\Documents\community_practice\BudgetTrackerAPI\BudgetTrackerWebApp\bin\Debug\net8.0\BudgetTrackerWebApp.pdb
+C:\Users\2380141\OneDrive - Cognizant\Documents\community_practice\BudgetTrackerAPI\BudgetTrackerWebApp\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\2380141\OneDrive - Cognizant\Documents\community_practice\BudgetTrackerAPI\BudgetTrackerWebApp\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\2380141\OneDrive - Cognizant\Documents\community_practice\BudgetTrackerAPI\BudgetTrackerWebApp\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\2380141\OneDrive - Cognizant\Documents\community_practice\BudgetTrackerAPI\BudgetTrackerWebApp\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\2380141\OneDrive - Cognizant\Documents\community_practice\BudgetTrackerAPI\BudgetTrackerWebApp\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\2380141\OneDrive - Cognizant\Documents\community_practice\BudgetTrackerAPI\BudgetTrackerWebApp\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\2380141\OneDrive - Cognizant\Documents\community_practice\BudgetTrackerAPI\BudgetTrackerWebApp\obj\Debug\net8.0\BudgetTrackerWebApp.csproj.AssemblyReference.cache
 C:\Users\2380141\OneDrive - Cognizant\Documents\community_practice\BudgetTrackerAPI\BudgetTrackerWebApp\obj\Debug\net8.0\BudgetTrackerWebApp.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\2380141\OneDrive - Cognizant\Documents\community_practice\BudgetTrackerAPI\BudgetTrackerWebApp\obj\Debug\net8.0\BudgetTrackerWebApp.AssemblyInfoInputs.cache
 C:\Users\2380141\OneDrive - Cognizant\Documents\community_practice\BudgetTrackerAPI\BudgetTrackerWebApp\obj\Debug\net8.0\BudgetTrackerWebApp.AssemblyInfo.cs
@@ -29,6 +36,7 @@ C:\Users\2380141\OneDrive - Cognizant\Documents\community_practice\BudgetTracker
 C:\Users\2380141\OneDrive - Cognizant\Documents\community_practice\BudgetTrackerAPI\BudgetTrackerWebApp\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.BudgetTrackerWebApp.props
 C:\Users\2380141\OneDrive - Cognizant\Documents\community_practice\BudgetTrackerAPI\BudgetTrackerWebApp\obj\Debug\net8.0\staticwebassets.pack.json
 C:\Users\2380141\OneDrive - Cognizant\Documents\community_practice\BudgetTrackerAPI\BudgetTrackerWebApp\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\2380141\OneDrive - Cognizant\Documents\community_practice\BudgetTrackerAPI\BudgetTrackerWebApp\obj\Debug\net8.0\BudgetTr.78B67B5D.Up2Date
 C:\Users\2380141\OneDrive - Cognizant\Documents\community_practice\BudgetTrackerAPI\BudgetTrackerWebApp\obj\Debug\net8.0\BudgetTrackerWebApp.dll
 C:\Users\2380141\OneDrive - Cognizant\Documents\community_practice\BudgetTrackerAPI\BudgetTrackerWebApp\obj\Debug\net8.0\refint\BudgetTrackerWebApp.dll
 C:\Users\2380141\OneDrive - Cognizant\Documents\community_practice\BudgetTrackerAPI\BudgetTrackerWebApp\obj\Debug\net8.0\BudgetTrackerWebApp.pdb

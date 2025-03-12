@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Bzpes9Q2iBrp5+CE/6U/J8b81ZJF4C51XTTvyp9rUVc=",
+  "Hash": "o1dY1hcQE8ECz9iYuJJA5BeLXCYUfI2k+st9BIu1EOI=",
   "Source": "BudgetTrackerWebApp",
   "BasePath": "_content/BudgetTrackerWebApp",
   "Mode": "Default",
@@ -73,8 +73,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "j1pykijvp4",
-      "Integrity": "uUCGdjsSvMiEqm6y+8OVXzJ648/qGvOtG3iu2APxAro=",
+      "Fingerprint": "vw4y4ux2vf",
+      "Integrity": "X5m2R5XyjHosAwfmJlqlf7glR4fh50vvVZZ+Lm7P/RI=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
@@ -4199,7 +4199,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 06 Mar 2025 17:27:01 GMT"
+          "Value": "Tue, 11 Mar 2025 04:36:54 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4244,7 +4244,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 06 Mar 2025 17:27:01 GMT"
+          "Value": "Tue, 11 Mar 2025 04:36:54 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4289,7 +4289,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 06 Mar 2025 17:27:01 GMT"
+          "Value": "Tue, 11 Mar 2025 04:36:54 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4326,7 +4326,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 06 Mar 2025 17:27:01 GMT"
+          "Value": "Tue, 11 Mar 2025 04:36:54 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4351,7 +4351,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "5697"
+          "Value": "18834"
         },
         {
           "Name": "Content-Type",
@@ -4359,11 +4359,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"uUCGdjsSvMiEqm6y+8OVXzJ648/qGvOtG3iu2APxAro=\""
+          "Value": "\"X5m2R5XyjHosAwfmJlqlf7glR4fh50vvVZZ+Lm7P/RI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 06 Mar 2025 17:40:32 GMT"
+          "Value": "Mon, 10 Mar 2025 11:52:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4373,12 +4373,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-uUCGdjsSvMiEqm6y+8OVXzJ648/qGvOtG3iu2APxAro="
+          "Value": "sha256-X5m2R5XyjHosAwfmJlqlf7glR4fh50vvVZZ+Lm7P/RI="
         }
       ]
     },
     {
-      "Route": "css/site.j1pykijvp4.css",
+      "Route": "css/site.vw4y4ux2vf.css",
       "AssetFile": "C:\\Users\\2380141\\OneDrive - Cognizant\\Documents\\community_practice\\BudgetTrackerAPI\\BudgetTrackerWebApp\\wwwroot\\css\\site.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -4388,7 +4388,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "5697"
+          "Value": "18834"
         },
         {
           "Name": "Content-Type",
@@ -4396,11 +4396,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"uUCGdjsSvMiEqm6y+8OVXzJ648/qGvOtG3iu2APxAro=\""
+          "Value": "\"X5m2R5XyjHosAwfmJlqlf7glR4fh50vvVZZ+Lm7P/RI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 06 Mar 2025 17:40:32 GMT"
+          "Value": "Mon, 10 Mar 2025 11:52:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4410,7 +4410,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "j1pykijvp4"
+          "Value": "vw4y4ux2vf"
         },
         {
           "Name": "label",
@@ -4418,7 +4418,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-uUCGdjsSvMiEqm6y+8OVXzJ648/qGvOtG3iu2APxAro="
+          "Value": "sha256-X5m2R5XyjHosAwfmJlqlf7glR4fh50vvVZZ+Lm7P/RI="
         }
       ]
     },

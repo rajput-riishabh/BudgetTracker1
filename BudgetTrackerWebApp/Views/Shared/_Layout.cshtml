@@ -1,163 +1,156 @@
-﻿@* BudgetTrackerWeb/Views/Shared/_Layout.cshtml *@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - BudgetBuddy</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/BudgetTrackerWebApp.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.18.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
-
+    @* <p style="color: red; font-size: larger; font-weight: bold;">LAYOUT CHECK TEXT - IS THIS VISIBLE?</p> *@
     <header>
-        <nav id="navbar-top" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark  mb-3 fixed-top">
-            @* Fixed top navbar for small screens - Initially hidden on larger screens via CSS *@
+        <nav id="navbar-top" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">BudgetBuddy</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Dashboard">Dashboard</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Expenses">Expenses</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Budgets">Budgets</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Reports">Reports</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Profile">Profile</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " asp-controller="Auth" asp-action="Login">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " asp-controller="Auth" asp-action="Register">Register</a>
-                        </li>
+                    <ul class="navbar-nav me-auto">
+                        @* Left side navbar items *@
+                        @if (User.Identity?.IsAuthenticated != true)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Auth" asp-action="Login">
+                                    <i class="bi bi-box-arrow-in-right"></i> Login
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Auth" asp-action="Register">
+                                    <i class="bi bi-person-plus-fill"></i> Register
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Profile">
+                                    <i class="bi bi-person-circle"></i> Welcome, @User.Identity.Name
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Expenses">
+                                    <i class="bi bi-currency-dollar"></i> Expenses
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Budgets">
+                                    <i class="bi bi-wallet-fill"></i> Budgets
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Income">
+                                    <i class="bi bi-cash-coin"></i> Income
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Reports">
+                                    <i class="bi bi-file-earmark-bar-graph-fill"></i> Reports
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <form class="form-inline" asp-area="" asp-controller="Auth" asp-action="Logout" method="post">
+                                    <button type="submit" class="nav-link btn btn-link text-light"><i class="bi bi-box-arrow-right"></i> Logout</button>
+                                </form>
+                            </li>
+                        }
                     </ul>
+                    <a class="link-secondary" href="#" aria-label="Add a new report">
+
+                        <a class="nav-link text-light website-name" asp-area="" asp-controller="Home" asp-action="Dashboard"><i class="bi bi-bank"><span>BudgetBuddy</span></i></a> @* Website name with icon in sidebar *@
+                    </a> @* Website name on right in Navbar *@
                 </div>
             </div>
         </nav>
     </header>
-
-
-
-    <div class="container-fluid">
+    <div class="container-fluid main-content-wrapper">
         <div class="row">
-            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block  sidebar collapse">
-                @* Sidebar - Initially visible on larger screens, hidden on smaller screens via CSS *@
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block  sidebar">
                 <div class="position-sticky pt-3">
-                    <div class="d-flex align-items-center justify-content-between px-3 mb-3">
-                        <span class="fs-5 fw-bold website-name">
-                            <i class="bi bi-piggy-bank-fill me-2"></i> BudgetBuddy
-                        </span>
-                        <button class="btn btn-sm btn-outline-light sidebar-toggler" aria-label="Toggle sidebar">
-                            <i class="bi bi-chevron-left"></i>
-                        </button>
-                    </div>
+                    <h5 class="sidebar-heading d-flex justify-content-center align-items-left py-1 mt-0 mb-1 text-muted">
+                        <a class="link-secondary" href="#" aria-label="Add a new report">
+                            
+                            <a class="nav-link text-light website-name" asp-area="" asp-controller="Home" asp-action="Dashboard"><i class="bi bi-bank"><span>BudgetBuddy</span></i></a> @* Website name with icon in sidebar *@
+                        </a>
+                    </h5>
 
                     <ul class="nav flex-column sidebar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link active" asp-controller="Home" asp-action="Index">
-                                <i class="bi bi-house-fill me-2"></i> Home
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Home" asp-action="Dashboard">
-                                <i class="bi bi-speedometer2 me-2"></i> Dashboard
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Home" asp-action="Expenses">
-                                <i class="bi bi-receipt me-2"></i> Expenses
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Home" asp-action="Budgets">
-                                <i class="bi bi-wallet2 me-2"></i> Budgets
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Home" asp-action="Reports">
-                                <i class="bi bi-bar-chart-line-fill me-2"></i> Reports
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Home" asp-action="Profile">
-                                <i class="bi bi-person-circle me-2"></i> Profile
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Auth" asp-action="Login">
-                                <i class="bi bi-box-arrow-in-right me-2"></i> Login
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Auth" asp-action="Register">
-                                <i class="bi bi-person-plus-fill me-2"></i> Register
-                            </a>
-                        </li>
+                        @if (User.Identity?.IsAuthenticated != true)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Auth" asp-action="Register">
+                                    <i class="bi bi-person-plus-fill"></i> Register
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Auth" asp-action="Login">
+                                    <i class="bi bi-box-arrow-in-right"></i> Login
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Profile">
+                                    <i class="bi bi-person-circle"></i>  Welcome, @User.Identity.Name
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Dashboard">
+                                    <i class="bi bi-house-door"></i> Dashboard
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Expenses">
+                                    <i class="bi bi-currency-rupee"></i> Expenses
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Budgets">
+                                    <i class="bi bi-wallet-fill"></i> Budgets
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Income">
+                                    <i class="bi bi-cash-stack"></i> Income
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Reports">
+                                    <i class="bi bi-file-earmark-bar-graph-fill"></i> Reports
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <form class="form-inline" asp-area="" asp-controller="Auth" asp-action="Logout" method="post">
+                                    <button type="submit" class="nav-link btn btn-link text-light"> <i class="bi bi-box-arrow-left"></i> Logout</button>
+                                </form>
+                            </li>
+                        }
                     </ul>
-
-                    @* <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted"> *@
-                    @*     <span>Saved reports</span> *@
-                    @*     <a class="link-secondary" href="#" aria-label="Add a new report"> *@
-                    @*         <span data-feather="plus-circle"></span> *@
-                    @*     </a> *@
-                    @* </h6> *@
-                    @* <ul class="nav flex-column mb-2 sidebar-nav"> *@
-                    @*     <li class="nav-item"> *@
-                    @*         <a class="nav-link" href="#"> *@
-                    @*             <i class="bi bi-file-earmark-text-fill me-2"></i> Current month *@
-                    @*         </a> *@
-                    @*     </li> *@
-                    @*     <li class="nav-item"> *@
-                    @*         <a class="nav-link" href="#"> *@
-                    @*             <i class="bi bi-file-earmark-text-fill me-2"></i> Last quarter *@
-                    @*         </a> *@
-                    @*     </li> *@
-                    @*     <li class="nav-item"> *@
-                    @*         <a class="nav-link" href="#"> *@
-                    @*             <i class="bi bi-file-earmark-text-fill me-2"></i> Year-end sale *@
-                    @*         </a> *@
-                    @*     </li> *@
-                    @* </ul> *@
-                </div>
-                <div class="sidebar-footer">
-                    <button class="sidebar-toggler btn btn-sm btn-outline-light" aria-label="Toggle sidebar">
-                        <i class="bi bi-chevron-left"></i>
-                    </button>
                 </div>
             </nav>
-            <div class="main-content-wrapper">
-                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
+
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
                 @RenderBody()
-                </main>
-            </div>
+            </main>
         </div>
     </div>
 
-
-    <footer class="border-top footer text-muted">
-        <div class="container footer-container">
+    <footer class="footer border-top text-muted footer-container">
+        <div class="container">
             &copy; 2025 - BudgetBuddy - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

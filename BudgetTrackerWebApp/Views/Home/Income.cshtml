@@ -1,0 +1,128 @@
+﻿@{
+    ViewData["Title"] = "Income";
+}
+
+<div class="container">
+    <h1>Income</h1>
+
+    <div class="mb-3">
+        <a asp-action="AddIncome" asp-controller="Home" class="btn btn-primary">Add New Income</a>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4" id="incomeCardsContainer">
+        @* Income cards will be loaded here by JavaScript *@
+    </div>
+</div>
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            loadIncomeData();
+        });
+
+        async function loadIncomeData() {
+            const incomeCardsContainer = document.getElementById('incomeCardsContainer');
+            incomeCardsContainer.innerHTML = 'Loading income data...';
+
+            const token = localStorage.getItem('authToken');
+            if (!token) {
+                incomeCardsContainer.textContent = 'Not logged in.';
+                return;
+            }
+
+            try {
+                const response = await fetch('http://localhost:5285/api/Income', {
+                    headers: {
+                        'Authorization': 'Bearer ' + token,
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (!response.ok) {
+                    incomeCardsContainer.textContent = `Failed to load income data. Status: ${response.status}`;
+                    console.error('Failed to load income data:', response);
+                    return;
+                }
+
+                const incomes = await response.json();
+                if (incomes.length === 0) {
+                    incomeCardsContainer.innerHTML = '<p>No income records found.</p>';
+                } else {
+                    populateIncomeCards(incomes); // Changed function name to populateIncomeCards
+                }
+
+            } catch (error) {
+                incomeCardsContainer.textContent = 'Error loading income data.';
+                console.error('Error fetching income data:', error);
+            }
+        }
+
+        function populateIncomeCards(incomes) { // Corrected function name: populateIncomeCards
+            const incomeCardsContainer = document.getElementById('incomeCardsContainer');
+            incomeCardsContainer.innerHTML = '';
+
+            incomes.forEach(income => {
+                const formattedDate = new Date(income.date).toLocaleDateString();
+                const cardHtml = `
+                    <div class="col">
+                        <div class="card h-100 income-card" style="cursor:pointer;">
+                            <div class="card-header">
+                                <h5 class="card-title badge bg-primary">${income.source}</h5>  </div>
+                            <div class="card-body" style="background-color: #1F7D53; color: white; border-radius: 8px; padding: 10px;">
+                                <div style="background-color: rgba(255, 255, 255, 0.1); border-radius: 5px; padding: 8px; margin-bottom: 8px;">
+                                    <h6 class="card-subtitle mb-0 text-light"><strong>Date:</strong> ${formattedDate}</h6>
+                                </div>
+                                <div style="background-color: rgba(255, 255, 255, 0.1); border-radius: 5px; padding: 8px; margin-bottom: 8px;">
+                                    <p class="card-text mb-0"><strong>Description:</strong> ${income.description ? income.description.substring(0, 50) + '...' : 'N/A'}</p>
+                                </div>
+                                <div style="background-color: rgba(255, 255, 255, 0.1); border-radius: 5px; padding: 8px; margin-bottom: 0px;">
+                                    <p class="card-text mb-0" style="font-size: 1.2em; font-weight: bold;"><strong>Amount:</strong> ₹${income.amount}</p>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-light border-top-0">
+                                <button class="btn btn-sm btn-outline-info edit-income-btn" style="font-size: 1.1rem;" onclick="editIncome(${income.incomeId})">Edit</button>
+                                <button class="btn btn-sm btn-outline-danger delete-income-btn ms-2" style="font-size: 1.1rem;" onclick="deleteIncome(${income.incomeId})">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                `; // Income card HTML using your expense card style (adapted)
+                incomeCardsContainer.innerHTML += cardHtml; // Append card HTML to container
+            });
+        }
+
+        function editIncome(incomeId) {
+            window.location.href = `@Url.Action("AddIncome", "Home")?incomeId=${incomeId}`;
+        }
+
+        async function deleteIncome(incomeId) {
+            if (confirm('Are you sure you want to delete this income record?')) {
+                const token = localStorage.getItem('authToken');
+                if (!token) {
+                    alert('Not logged in.');
+                    return;
+                }
+
+                try {
+                    const response = await fetch(`http://localhost:5285/api/Income/${incomeId}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'Authorization': 'Bearer ' + token,
+                            'Content-Type': 'application/json'
+                        }
+                    });
+
+                    if (response.ok) {
+                        alert('Income record deleted successfully.');
+                        loadIncomeData();
+                    } else {
+                        alert('Failed to delete income record.');
+                        console.error('Failed to delete income:', response);
+                    }
+
+                } catch (error) {
+                    alert('Error deleting income record.');
+                    console.error('Error deleting income:', error);
+                }
+            }
+        }
+    </script>
+}

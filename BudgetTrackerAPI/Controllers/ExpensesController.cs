@@ -90,7 +90,8 @@ namespace BudgetTrackerAPI.Controllers
                     Date = e.Date,
                     CategoryName = e.Category.Name,
                     Amount = e.Amount,
-                    Description = e.Description
+                    Description = e.Description,
+                    CategoryId = e.CategoryId
                 })
                 .FirstOrDefaultAsync();
 
@@ -179,6 +180,15 @@ namespace BudgetTrackerAPI.Controllers
 
             return NoContent();
         }
+
+        //// GET: api/Expenses/AddExpense
+        //[HttpGet("AddExpense")] // Route for displaying the Add Expense view
+        //public IActionResult AddExpense()
+        //{
+        //    // For now, simply return the view.
+        //    // In a more complex scenario, you might pass data to the view here.
+        //    return View("AddExpense"); // Returns the AddExpense.cshtml view
+        //}
 
         private int? GetUserIdFromClaims()
         {

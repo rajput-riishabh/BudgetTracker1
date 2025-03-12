@@ -1,50 +1,33 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\2380141\\OneDrive - Cognizant\\Documents\\community_practice\\BudgetTrackerAPI\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{531DDE37-B4FD-409C-B20C-B617A01E3701}|BudgetTrackerWebApp\\BudgetTrackerWebApp.csproj|c:\\users\\2380141\\onedrive - cognizant\\documents\\community_practice\\budgettrackerapi\\budgettrackerwebapp\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{531DDE37-B4FD-409C-B20C-B617A01E3701}|BudgetTrackerWebApp\\BudgetTrackerWebApp.csproj|solutionrelative:budgettrackerwebapp\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{531DDE37-B4FD-409C-B20C-B617A01E3701}|BudgetTrackerWebApp\\BudgetTrackerWebApp.csproj|c:\\users\\2380141\\onedrive - cognizant\\documents\\community_practice\\budgettrackerapi\\budgettrackerwebapp\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{531DDE37-B4FD-409C-B20C-B617A01E3701}|BudgetTrackerWebApp\\BudgetTrackerWebApp.csproj|solutionrelative:budgettrackerwebapp\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
-      "Orientation": 0,
+      "Orientation": 1,
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "DockedHeight": 250,
+          "SelectedChildIndex": -1,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "site.css",
-              "DocumentMoniker": "C:\\Users\\2380141\\OneDrive - Cognizant\\Documents\\community_practice\\BudgetTrackerAPI\\BudgetTrackerWebApp\\wwwroot\\css\\site.css",
-              "RelativeDocumentMoniker": "BudgetTrackerWebApp\\wwwroot\\css\\site.css",
-              "ToolTip": "C:\\Users\\2380141\\OneDrive - Cognizant\\Documents\\community_practice\\BudgetTrackerAPI\\BudgetTrackerWebApp\\wwwroot\\css\\site.css",
-              "RelativeToolTip": "BudgetTrackerWebApp\\wwwroot\\css\\site.css",
-              "ViewState": "AgIAAIgAAAAAAAAAAAAcwJcAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-03-06T17:40:18.765Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "site.js",
-              "DocumentMoniker": "C:\\Users\\2380141\\OneDrive - Cognizant\\Documents\\community_practice\\BudgetTrackerAPI\\BudgetTrackerWebApp\\wwwroot\\js\\site.js",
-              "RelativeDocumentMoniker": "BudgetTrackerWebApp\\wwwroot\\js\\site.js",
-              "ToolTip": "C:\\Users\\2380141\\OneDrive - Cognizant\\Documents\\community_practice\\BudgetTrackerAPI\\BudgetTrackerWebApp\\wwwroot\\js\\site.js",
-              "RelativeToolTip": "BudgetTrackerWebApp\\wwwroot\\js\\site.js",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-03-06T17:39:48.825Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            }
+          ]
+        },
+        {
+          "DockedHeight": 150,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             }
           ]
         }

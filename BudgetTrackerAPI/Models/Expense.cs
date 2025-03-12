@@ -29,6 +29,6 @@ namespace BudgetTrackerAPI.Models
         public DateTime Date { get; set; }
 
         [MaxLength(255)]
-        public string? Description { get; set; } // Nullable description
+        public string Description { get; set; } // Nullable description
     }
 }

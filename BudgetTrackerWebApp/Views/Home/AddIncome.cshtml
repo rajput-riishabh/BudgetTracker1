@@ -1,0 +1,207 @@
+﻿@{
+    ViewData["Title"] = "Add New Income"; // Default title - will be changed by JavaScript if in Edit mode
+}
+
+<div class="container">
+    <h1 id="pageTitle">Add New Income</h1>
+
+    <form id="addIncomeForm" method="post">
+        <input type="hidden" id="IncomeId" name="IncomeId" value="" /> @* Hidden input to store IncomeId in edit mode *@
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="mb-3">
+            <label for="Source" class="form-label">Source</label>
+            <input type="text" class="form-control" id="Source" name="Source" required />
+            <span id="source-error" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="Date" class="form-label">Date</label>
+            <input type="date" class="form-control" id="Date" name="Date" required />
+            <span id="date-error" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="Amount" class="form-label">Amount</label>
+            <input type="number" class="form-control" id="Amount" name="Amount" step="1" required />
+            <span id="amount-error" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="Description" class="form-label">Description</label>
+            <textarea class="form-control" id="Description" name="Description" rows="3"></textarea>
+            <span id="description-error" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="submitButton">Add Income</button>
+        <a asp-action="Income" asp-controller="Home" class="btn btn-secondary ms-2">Cancel</a>
+        <div id="form-error" class="alert alert-danger mt-3" style="display:none;"></div>
+        <div id="form-success" class="alert alert-success mt-3" style="display:none;"></div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            checkAndLoadIncomeForEdit(); // Check for incomeId and load income if in edit mode
+
+            const form = document.getElementById('addIncomeForm');
+            form.addEventListener('submit', handleFormSubmit); // Attach submit event listener
+        });
+
+
+        function checkAndLoadIncomeForEdit() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const incomeId = urlParams.get('incomeId');
+
+            if (incomeId) {
+                loadIncomeForEdit(incomeId);
+                document.getElementById('pageTitle').textContent = 'Edit Income'; // Change page title
+                document.getElementById('submitButton').textContent = 'Save Changes'; // Change button text
+            }
+        }
+
+        async function loadIncomeForEdit(incomeId) {
+            try {
+                const response = await fetch(`http://localhost:5285/api/Income/${incomeId}`, { // API endpoint to get income by ID
+                    headers: {
+                        'Authorization': 'Bearer ' + localStorage.getItem('authToken'),
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (!response.ok) {
+                    console.error('Failed to load income for edit:', response.status, response.statusText);
+                    displayGeneralError('Failed to load income for editing.'); // Display error to user
+                    return;
+                }
+
+                const income = await response.json();
+                populateFormForEdit(income); // Populate form with income data
+
+            } catch (error) {
+                console.error('Error fetching income for edit:', error);
+                displayGeneralError('Error fetching income details.'); // Display error to user
+            }
+        }
+
+
+        function populateFormForEdit(income) {
+            document.getElementById('IncomeId').value = income.incomeId; // Set hidden IncomeId input
+            const utcDate = new Date(income.date + 'Z'); // Append 'Z' to indicate UTC
+            document.getElementById('Date').value = utcDate.toISOString().slice(0, 10); // Format date for input[type=date]
+            document.getElementById('Source').value = income.source;
+            document.getElementById('Description').value = income.description;
+            document.getElementById('Amount').value = income.amount;
+        }
+
+
+        async function handleFormSubmit(event) {
+            event.preventDefault(); // Prevent default form submission
+            const form = document.getElementById('addIncomeForm');
+            // Clear any previous error messages
+            document.getElementById('form-error').style.display = 'none';
+            document.getElementById('form-success').style.display = 'none';
+            clearValidationErrors(); // Clear individual field error messages
+
+            const incomeId = document.getElementById('IncomeId').value; // Get IncomeId from hidden input
+
+            const formData = {
+                incomeId: incomeId ? parseInt(incomeId) : 0, // Include incomeId if in edit mode
+                source: document.getElementById('Source').value,
+                date: document.getElementById('Date').value,
+                description: document.getElementById('Description').value,
+                amount: parseFloat(document.getElementById('Amount').value)         // Parse to float
+            };
+
+            const isEditMode = incomeId !== ""; // Determine if it's edit mode based on IncomeId
+
+            try {
+                const apiUrl = isEditMode ? `http://localhost:5285/api/Income/${incomeId}` : 'http://localhost:5285/api/Income'; // Determine API URL based on mode
+                const method = isEditMode ? 'PUT' : 'POST'; // Determine HTTP method based on mode
+
+                const response = await fetch(apiUrl, { // Your API endpoint to create income
+                    method: method,
+                    headers: {
+                        'Authorization': 'Bearer ' + localStorage.getItem('authToken'),
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData) // Convert data to JSON
+                });
+
+                if (response.ok) {
+                    // Success message based on mode
+                    const successMessage = isEditMode ? 'Income updated successfully!' : 'Income added successfully!';
+                    document.getElementById('form-success').textContent = successMessage;
+                    document.getElementById('form-success').style.display = 'block';
+                    form.reset(); // Clear the form
+                    // Optionally, redirect to Income page after a short delay:
+                    setTimeout(() => {
+                        window.location.href = '@Url.Action("Income", "Home")'; // Redirect to Income page
+                    }, 1500); // Wait 1.5 seconds before redirecting
+                } else {
+                    // ... (Error handling - similar to Expenses, adapt messages for income) ...
+                    console.error('Error ' + (isEditMode ? 'updating' : 'adding') + ' income:', response.status, response.statusText);
+                    if (response.status === 400) {
+                        try {
+                            const errorData = await response.json();
+                            displayValidationErrors(errorData);
+                        } catch (parseError) {
+                            displayGeneralError('Failed to ' + (isEditMode ? 'update' : 'add') + ' income. Please check your input and try again.');
+                        }
+                    } else if (response.status === 401 || response.status === 403) {
+                        displayGeneralError('Authentication failed. Please log in again.');
+                    }
+                    else {
+                        displayGeneralError(`Failed to ${isEditMode ? 'update' : 'add'} income. Server error: ${response.status} - ${response.statusText}`);
+                    }
+                }
+
+
+            } catch (error) {
+                console.error('Fetch error:', error);
+                displayGeneralError('Failed to ' + (isEditMode ? 'update' : 'add') + ' income. Network error. Please try again later.');
+            }
+        }
+
+        function displayValidationErrors(errorData) {
+            // ... (Your displayValidationErrors function - unchanged) ...
+            console.log("Validation Errors from API:", errorData); // Log for debugging
+
+            if (errorData.errors) { // Check if it's in the ModelState format
+                for (const fieldName in errorData.errors) {
+                    const errorMessages = errorData.errors[fieldName];
+                    const errorSpanId = fieldName.toLowerCase() + '-error'; // e.g., "date-error"
+                    const errorSpan = document.getElementById(errorSpanId);
+                    if (errorSpan) {
+                        errorSpan.textContent = errorMessages.join(' '); // Display all error messages for the field
+                    } else {
+                        console.warn(`Error span not found for field: ${fieldName} (ID: ${errorSpanId})`); // Warn if span not found
+                    }
+                }
+            } else if (typeof errorData === 'string') { // Check if API returned a simple string error message
+                displayGeneralError(errorData);
+            } else {
+                displayGeneralError('Validation errors occurred, but could not display details. Check console.'); // Generic validation error if format unexpected
+            }
+        }
+
+
+        function clearValidationErrors() {
+            // ... (Your clearValidationErrors function - unchanged) ...
+            document.querySelectorAll('.text-danger').forEach(span => {
+                span.textContent = '';
+            });
+        }
+
+        function displayGeneralError(message) {
+            // ... (Your displayGeneralError function - unchanged) ...
+            const errorDiv = document.getElementById('form-error');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+        }
+    </script>
+}

@@ -3,17 +3,23 @@
 /* --------------------------------------- */
 /*             Color Palette             */
 /* From colorhunt.co/palette/18230f27391c255f381f7d53 */
+/* https://coolors.co/palette/f8f9fa-e9ecef-dee2e6-ced4da-adb5bd-6c757d-495057-343a40-212529 */
 /* --------------------------------------- */
 :root {
-    --color-primary: #18230F; /* Dark Slate Gray (Palette Color 1) */
-    --color-secondary: #27391C; /* Dark Olive Green (Palette Color 2 - Navbar & Sidebar BG) */
-    --color-accent: #255F38; /* Forest Green (Palette Color 3) */
-    --color-highlight: #1F7D53; /* Medium Sea Green (Palette Color 4) */
+    /*--color-primary: #18230F;*/ /* Dark Slate Gray (Palette Color 1) */
+    /*--color-secondary: #27391C;*/ /* Dark Olive Green (Palette Color 2 - Navbar & Sidebar BG) */
+    /*--color-accent: #255F38;*/ /* Forest Green (Palette Color 3) */
+    /*--color-highlight: #1F7D53;*/ /* Medium Sea Green (Palette Color 4) */
 
+
+    --color-primary: #E0E1DD;
+    --color-secondary: #415A77;
+    --color-accent: #0D1B2A;
+    --color-highlight: #1B263B;
     /* Readability Colors */
-    --color-background: #f8fafa; /* White Smoke (Page Background) */
-    --color-text-primary: #333; /* Dark Gray for primary text (on light backgrounds) */
-    --color-text-secondary: #eee; /* Light Gray for secondary text (on dark backgrounds - Navbar, Sidebar) */
+    --color-background: #212529;
+    --color-text-primary: #333;
+    --color-text-secondary: #eee;
 }
 
 
@@ -26,6 +32,7 @@ body {
     color: var(--color-background);
     margin: 0;
     padding-bottom: 20px;
+    overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -226,7 +233,7 @@ h1, h2, h3 {
     }
 
     .expense-card .card-header {
-        background-color: var(--color-background);
+        background-color: var(--color-text-secondary);
         border-bottom: none;
         padding-bottom: 0;
     }
@@ -234,7 +241,7 @@ h1, h2, h3 {
     .expense-card .card-title {
         font-size: 1.1rem;
         font-weight: bold;
-        color: var(--color-secondary);
+        color: var(--color-text-secondary);
     }
 
     .expense-card .badge.bg-primary {
@@ -265,8 +272,8 @@ h1, h2, h3 {
     .expense-card .card-footer {
         background-color: var(--color-background);
         border-top: 1px solid #eee;
-        padding-top: 0.75rem;
-        padding-bottom: 0.75rem;
+        padding-top: 0.3rem;
+        padding-bottom: 0.3rem;
         text-align: right;
         margin-top: 1rem; /* Add margin to separate footer visually from body content */
     }
@@ -287,35 +294,40 @@ h1, h2, h3 {
 /* --------------------------------------- */
 /*               Sidebar Styles            */
 /* --------------------------------------- */
-.sidebar {
+#sidebar {
     background-color: var(--color-secondary);
     color: var(--color-text-secondary);
     width: 200px;
-    height: 85.5vh;
+    height: 92vh;
     position: fixed;
     top: 0;
     left: 0;
+    border-right: 2px solid white;
     padding-top: inherit;
     transition: transform 0.3s ease-in-out;
     overflow-x: hidden; /* Prevent horizontal scrollbar if content overflows */
     z-index: 100; /* Ensure sidebar is above main content if needed */
+    display: block;
+    width: 220px;
+    min-width: 220px;
 }
 
 
-    .sidebar .website-name {
-        font-size: 2rem;
+    #sidebar .website-name {
+/*        font-size: 1.5rem;*/
         font-weight: bolder;
-        text-align: left;
+        text-align: start;
         color: var(--color-accent);
+        text-decoration: none;
         /*        ,padding: 0px 0px 0px 0px;*/
-        display: block;
-        margin-bottom: 0px;
+        display: inline-block;
+/*        margin-bottom: 0px;*/
+        margin-left: 0.5rem;
     }
 
-        .sidebar .website-name i {
-            
-            margin-right: 2px;
-            font-size: 2rem;
+        #sidebar .website-name i {
+            margin-right: 0.3rem;
+            font-size: 1.3rem;
             vertical-align: middle;
         }
 
@@ -343,7 +355,7 @@ h1, h2, h3 {
 
         .sidebar-nav .nav-link:hover,
         .sidebar-nav .nav-link:focus {
-            background-color: #18230F;
+            background-color: #1B263B;
         }
 
         .sidebar-nav .nav-link.active {
@@ -359,18 +371,23 @@ h1, h2, h3 {
         }
 
 
-.sidebar-heading {
-    font-size: 0.85rem;
+#sidebar .sidebar-heading {
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    padding: 8px 20px;
-    margin-top: 0rem; /* Reduced top margin slightly */
-    margin-bottom: 0.4rem;
-    border-top: 1px solid rgba(var(--color-text-secondary-rgb), );
+/*    letter-spacing: 0.05em;*/
+    padding: 0.875rem 1.25rem;
+    /*margin-top: 0rem;*/ /* Reduced top margin slightly */
+    /*margin-bottom: 0.4rem;*/
+    border-top: 1px solid rgba(var(--color-text-secondary-rgb), 0.1);
 }
 
     .sidebar-heading span {
-        font-weight: normal;
+        font-weight: bolder;
     }
 
     .sidebar-heading .link-secondary {
@@ -460,6 +477,7 @@ h1, h2, h3 {
     background-color: var(--color-secondary); /* Sidebar color applied to Navbar */
     padding-top: 0.5rem; /* Reduced navbar top padding */
     padding-bottom: 0.5rem; /* Reduced navbar bottom padding */
+    display: none;
 }
 
     #navbar-top .navbar-brand {
@@ -593,11 +611,6 @@ footer {
     .search-container input[type="search"] {
         max-width: 100%;
     }
-}
 
-/* --------------------------------------- */
-/*                Sidebar Separator        */
-/* --------------------------------------- */
-#sidebar {
-    border-right: 2px solid white; /* White separation line on the right of sidebar */
+
 }
