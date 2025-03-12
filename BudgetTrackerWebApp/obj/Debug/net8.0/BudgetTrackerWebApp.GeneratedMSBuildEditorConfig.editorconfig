@@ -40,16 +40,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhwZW5zZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/2380141/OneDrive - Cognizant/Documents/community_practice/BudgetTrackerAPI/BudgetTrackerWebApp/Views/Home/AddIncome.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZGRJbmNvbWUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/2380141/OneDrive - Cognizant/Documents/community_practice/BudgetTrackerAPI/BudgetTrackerWebApp/Views/Home/Budgets.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxCdWRnZXRzLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/2380141/OneDrive - Cognizant/Documents/community_practice/BudgetTrackerAPI/BudgetTrackerWebApp/Views/Home/Income.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmNvbWUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/2380141/OneDrive - Cognizant/Documents/community_practice/BudgetTrackerAPI/BudgetTrackerWebApp/Views/Home/Index.cshtml]
@@ -66,6 +58,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/2380141/OneDrive - Cognizant/Documents/community_practice/BudgetTrackerAPI/BudgetTrackerWebApp/Views/Home/Reports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2380141/OneDrive - Cognizant/Documents/community_practice/BudgetTrackerAPI/BudgetTrackerWebApp/Views/Income/AddIncome.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5jb21lXEFkZEluY29tZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2380141/OneDrive - Cognizant/Documents/community_practice/BudgetTrackerAPI/BudgetTrackerWebApp/Views/Income/Income.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5jb21lXEluY29tZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/2380141/OneDrive - Cognizant/Documents/community_practice/BudgetTrackerAPI/BudgetTrackerWebApp/Views/Shared/Error.cshtml]
